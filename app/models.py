@@ -2,22 +2,15 @@ from django.db import models
 
 # Create your models here.
 
-
-
-class Question(models.Model):
-
-    question_text = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='galaxias')
-
-    def __str__(self):
-        return self.question_text
    
 class Choice(models.Model):
 
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
+    #question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    CHOICE_TEXT = (('A', 'Alta'), ('B', 'Baja'))
+    Que_tipo_de_interacción_ves = models.CharField(max_length=200, choices=CHOICE_TEXT, default='A')
+    image = models.ImageField(upload_to= 'galaxias', default='galaxias/tailandia.jpg')
     votes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.choice_text
+        return self.Que_tipo_de_interacción_ves
     
