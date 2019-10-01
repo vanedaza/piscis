@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Image Gallery</title>
@@ -7,7 +7,7 @@
   <body>
     {% load static %}
     {% for image in images %}
-      <img src="{{image.image.url}}" style="width:150px;">
+      <img src="{{image.image.url}}">
     {% endfor %}
   </body>
 </html>

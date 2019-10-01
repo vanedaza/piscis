@@ -9,4 +9,3 @@ urlpatterns = [
     path('image_gallery/', views.image_gallery, name='image_gallery')   
 ]
 
-

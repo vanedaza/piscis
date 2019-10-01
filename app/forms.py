@@ -1,7 +1,7 @@
 from django import forms
 from .models import *
 
-class Choice(forms.ModelForm):
+class ImageForm(forms.ModelForm):
    class Meta:
-      model = Choice
+      model = Imagen
       fields = ['image']
