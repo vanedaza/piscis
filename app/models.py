@@ -12,3 +12,4 @@ class Choice(models.Model):
     def __str__(self):
         return self.Que_tipo_de_interacción_ves
 
+

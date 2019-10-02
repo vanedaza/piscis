@@ -13,3 +13,4 @@ class UnitTestRunner(DiscoverRunner):
         return TestSuite(tests=tests)
     def is_unittest(self, test):
         return not issubclass(test.__class__, TransactionTestCase)
+
