@@ -18,7 +18,7 @@ If you prefer, you can create a virtual environment with some of the commands:
 
 Option 1, for conda:
 
-conda create --name environment_name python=3.7
+$conda create --name environment_name python=3.7
 
 activate your environment:
 $ source activate environment_name
