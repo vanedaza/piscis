@@ -5,6 +5,7 @@
 #   Full Text: https://github.com/mkoraj/piscis/blob/master/LICENSE
 
 from django.db import models
+from django.contrib.auth.models import User
    
 class Imagen(models.Model):
     """"Upload the image to be voted. The uploaded images are saved in a gallery"""
@@ -20,4 +21,12 @@ class Choice(models.Model):
     def __str__(self):
         return self.Que_tipo_de_interacción_ves
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, related_name="Usuario", on_delete=models.CASCADE, primary_key=True)
+    Choice_genre = (('m', 'Masculino'), ('f', 'Feminino'),('o', 'Otro'))
+    website=models.URLField(default='', null=True)
+    genre = models.CharField(max_length=1, choices=Choice_genre)
+    birth_date = models.DateField(default='', null=True)
+    def __str__(self):
+        return str(self.user)
 
