@@ -1,5 +1,0 @@
-#!/home/vanessa/MEGAsync/Dise_Herra_Comp_cien/django_04_10_19/piscispip/bin/python3.7
-from django.core import management
-
-if __name__ == "__main__":
-    management.execute_from_command_line()
