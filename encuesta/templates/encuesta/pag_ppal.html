@@ -1,0 +1,58 @@
+{% extends 'encuesta/base.html' %}
+
+{% block content %}
+<script>
+        // Array con todas las imágenes que deseamos que se vayan cambiando a
+        // cada clic
+        var imagenes=Array("static/Scatter_Mh_vs_Ms.png", "static/fig1.png");
+        var imagenVisible=0;
+     
+        // Función que cambia la imagen actual por la siguiente
+        function cambiar(img)
+        {
+            imagenVisible++;
+            if(imagenVisible>=imagenes.length)
+            {
+                imagenVisible=0;
+            }
+            img.src=imagenes[imagenVisible];
+            cargarSiguienteImagen();
+        }
+     
+        /**
+         * Esta función carga la siguiente imagen para no tener que esperar su carga
+         * en el momento de mostrarla.
+         */
+        function cargarSiguienteImagen()
+        {
+            if((imagenVisible+1)<imagenes.length)
+            {
+                console.log(imagenVisible+1);
+                var imgTmp=new Image();
+                imgTmp.src=imagenes[imagenVisible+1];
+            }
+        }
+     
+        window.onload=function() {
+            cargarSiguienteImagen();
+        }
+</script>
+     
+        <style>
+        img {cursor:pointer;}
+        </style>
+
+    <div>
+           <img src="static/Scatter_Mh_vs_Ms.png" height=200 width=200 onclick="cambiar(this);">
+    </div>
+    <div>
+	<h2><a href="{% url 'contact_det' %}">Contactos</a></h2>
+	<p>¿Quienes somos?</p>
+    </div>
+    <div>
+	<h2><a href="{% url 'desc_det' %}">Descripción</a></h2>
+    </div>	
+	<h2><a href="{% url 'app_encuesta' %}">Encuesta</a></h2>
+	<p>¡Participe de la encuesta!</p>
+    </div>
+{% endblock %}

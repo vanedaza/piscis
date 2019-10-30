@@ -1,0 +1,26 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>PISCIS</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/encuesta.css' %}">
+        </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/">PISCIS</a></h1>
+            <p>Plataform form interactive search citizen science</p>
+        </div>
+
+<!--        <div class="encuesta">
+            <h2><a href="">Registrar Usuario</a></h2>
+            <p>Registrarse para participar del proyecto</p>
+        </div>-->
+        <div class="encuesta">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
