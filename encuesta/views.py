@@ -23,14 +23,23 @@ def user(request):
 
 #def choice_new(request):
 def app_encuesta(request):
+	all_choices = models.Choice.objects.all()
+	image = random.choice(all_choices)
 	if request.method == "POST":
 		form = ChoiceForm(request.POST)
 		if form.is_valid():
 			choice = form.save(commit=False)
 			choice.usuario = request.user
+			choice.imgen = request.image.id
 			choice.save()
 			return redirect('app_encuesta')
 	else:
 		form = ChoiceForm()
 		return render(request, 'encuesta/app_encuesta.html',{'form':form})
 
+def astronomerregister(request):
+	if request.method == 'POST':
+		print('algo')
+	else:
+		print('request es get')
+	
