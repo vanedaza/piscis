@@ -7,7 +7,7 @@ class ChoiceForm(forms.ModelForm):
         model = Choice
         fields = ('voto',)
 
-class AstronomerForm(form.ModelForm):
-    class Meta:
-        model = Astronomer
+#class AstronomerForm(form.ModelForm):
+#    class Meta:
+#        model = Astronomer
         

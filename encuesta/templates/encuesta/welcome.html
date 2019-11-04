@@ -1,0 +1,14 @@
+{% extends 'encuesta/base.html' %}
+
+{% block content %}
+
+<div>
+	<h2>Bienvenido</h2>
+	<p>
+	    Hola <b>{{request.user.username}}</b>, gracias por 
+	    participar de PISCIS. ¡No olvidés participar de nuestra encuesta!
+	</p>
+</div>
+<hr />
+<a href="/logout">Cerrar sesión</a>
+{% endblock %}

@@ -10,6 +10,6 @@ class Choice(models.Model):
     CHOICE_TEXT = (('A', 'Alta'), ('B', 'Baja'), ('C','Ninguna'))
     voto = models.CharField(max_length=200, choices=CHOICE_TEXT)
     
-class Astronomer(models.Model):
-    user = models.OneToOne(User, on_delete=models.CASCADE)
-    name = models.charField()
+#class Astronomer(models.Model):
+#    user = models.OneToOne(User, on_delete=models.CASCADE)
+#    name = models.charField()
