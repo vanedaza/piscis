@@ -1,6 +1,14 @@
 {% extends 'encuesta/base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!}
+  <p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+
     <div>
         <img src="http://127.0.0.1:8000/static/Scatter_Mh_vs_Ms.png" height=200 width=200>
     </div>
