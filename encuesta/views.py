@@ -1,12 +1,21 @@
+from django.http import HttpResponse
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
+from .tokens import account_activation_token
+from django.core.mail import EmailMessage
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.shortcuts import redirect
 from .models import *
 from .forms import ChoiceForm
+from .forms import AstronomerForm
 from django.contrib.auth import logout as do_logout
 from django.contrib.auth import login as do_login
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.forms import UserCreationForm
+
 
 
 def pag_ppal(request):
@@ -39,45 +48,61 @@ def welcome(request):
 
     return redirect('login')
 
-
 def registrar_usr(request):
-   # Creamos el formulario de autenticación vacío
-    form = UserCreationForm()
     if request.method == "POST":
-        # Añadimos los datos recibidos al formulario
-        form = UserCreationForm(data=request.POST)
-        # Si el formulario es válido...
+        form = AstronomerForm(data=request.POST)
         if form.is_valid():
-            # Creamos la nueva cuenta de usuario
-            user = form.save()
-            # Si el usuario se crea correctamente 
+            user = form.save(commit=False)
+            user.is_activate = False
+            user.save()
+            current_site = get_current_site(request)
+            email_subject = 'Activa tu cuenta de PISCIS.'
+            message = render_to_string('encuesta/acc_active_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+                'token':account_activation_token.make_token(user),
+            })
+            to_email = form.cleaned_data.get('email')
+            email = EmailMessage(
+                        email_subject, message, to=[to_email]
+            )
+            email.send()
+            return HttpResponse('Por favor confirme su cuenta de mail para completar el registro')
             if user is not None:
-                # Hacemos el login manualmente
                 do_login(request, user)
-                # Y le redireccionamos a la portada
                 return redirect('pag_ppal')
-
+    else:
+        form = AstronomerForm()
     form.fields['username'].help_text = None
     form.fields['password2'].help_text = None
     return render(request, 'encuesta/registrar_usr.html',{'form':form})
 
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        do_login(request, user)
+        # return redirect('home')
+        return HttpResponse('Gracias por confirmar si correo. Ahora puedes acceder a tu cuenta.')
+    else:
+        return HttpResponse('Link de activación invalido!')
+
 def login(request):
     form = AuthenticationForm()
     if request.method == "POST":
-        # Añadimos los datos recibidos al formulario
         form = AuthenticationForm(data=request.POST)
-        # Si el formulario es válido...
         if form.is_valid():
-            # Recuperamos las credenciales validadas
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            # Verificamos las credenciales del usuario
             user = authenticate(username=username, password=password)
-            # Si existe un usuario con ese nombre y contraseña
             if user is not None:
-                # Hacemos el login manualmente
                 do_login(request, user)
-                # Y le redireccionamos a la portada
                 return redirect('pag_ppal')
 
     return render(request, 'encuesta/login.html', {'form':form})
@@ -86,10 +111,3 @@ def logout(request):
     do_logout(request)
     return redirect('welcome')
 
-
-#def astronomerregister(request):
-#	if request.method == 'POST':
-#		print('algo')
-#	else:
-#		print('request es get')
-	

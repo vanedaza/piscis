@@ -1,0 +1,7 @@
+{% autoescape off %}
+Hola, estas muy cerca de ser usuario de PISCIS {{ user.username }},
+
+por favor haga click en el siguiente link para confirmar su registro,
+
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}

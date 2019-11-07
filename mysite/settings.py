@@ -125,6 +125,16 @@ MEDIA_URL = '/media/'                        # es la URL que podemos usar en nue
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  #ruta absoluta de los archivos cargados por el usuario
 
+LOGIN_REDIRECT_URL = "index"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'piscis.proyect@gmail.com'
+EMAIL_HOST_PASSWORD = 'piscis1234'
+EMAIL_PORT = 587
+
 #new/agrego esto para ver si funca el botoncito.
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+
