@@ -89,7 +89,8 @@ def activate(request, uidb64, token):
         user.save()
         do_login(request, user)
         # return redirect('home')
-        return HttpResponse('Gracias por confirmar si correo. Ahora puedes acceder a tu cuenta.')
+#        return HttpResponse('Gracias por confirmar su correo. Ahora puedes acceder a tu cuenta.')
+        return redirect('app_encuesta')
     else:
         return HttpResponse('Link de activación invalido!')
 
