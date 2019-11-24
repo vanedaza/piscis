@@ -11,7 +11,8 @@ PasswordResetCompleteView,
 PasswordChangeView,
 PasswordChangeDoneView,
 )
-
+#from .views import HomePageView
+#path('pag_ppal/app_encuesta/', HomePageView.as_view(), name='imagen'),
 urlpatterns = [
         path('', views.pag_ppal, name = 'pag_ppal'),
 	path('pag_ppal/contact_det/', views.contact_det, name = 'contact_det'),

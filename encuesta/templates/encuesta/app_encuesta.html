@@ -1,25 +1,35 @@
 {% extends 'encuesta/base.html' %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!}
-  <p><a href="{% url 'logout' %}">logout</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
-{% endif %}
 
-    <div>
-        <img src="http://127.0.0.1:8000/static/Scatter_Mh_vs_Ms.png" height=200 width=200>
-    </div>
-    <h2>¿Qué tipo de interacción ves?</h2>
+  {% if user.is_authenticated %}
+    <h5><a href="/">Hola {{ user.username }}!</a>
+    <a href="{% url 'logout' %}">logout</a>
+  {% else %}
+    You are not logged in
+    <a href="{% url 'login' %}">login</a></h5>
+  {% endif %}
+
+  <div>
+    <img src="http://127.0.0.1:8000/static/interacción.png" height=200 width=1100>
+  </div>
+
+  <h6>¿Qué tipo de interacción ves?</h6>
+
+
+ <!--  <ul>
+      {% for image in object_list %}
+        <img src="{{image.picture.url}}"  height=200 width=200/>
+      {% endfor %}
+   </ul>-->  
+  <form method="POST" class="choice-form">{% csrf_token %}
+      {{form.as_p}}
+      <button type="submit" class="save btn btn-default">Guardar</button>
+  </form>
+
+{% endblock %}
 <!--    <ul>
       % for choice in Choice.objects.all %}
         <img src="{choice.cover.url}}" alt="{ choice.usuario }}">
       % endfor %}
     </ul>-->
-    <form method="POST" class="choice-form">{% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class="save btn btn-default">Guardar</button>
-    </form>
-{% endblock %}

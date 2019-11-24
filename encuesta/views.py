@@ -16,7 +16,10 @@ from django.contrib.auth import login as do_login
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 
-
+#from django.views.generic import ListView
+#class HomePageView(ListView):
+#    model = Images
+#    template_name = 'encuesta/app_encuesta.html'
 
 def pag_ppal(request):
     return render(request, 'encuesta/pag_ppal.html',{})

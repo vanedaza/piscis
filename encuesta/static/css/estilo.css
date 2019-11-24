@@ -1,0 +1,50 @@
+body {
+    font-family: 'Lobster', cursive;
+    padding-left: 0em;
+    color: rgb(250, 244, 250);
+    background-color: #350132;
+    right: 0em}
+ul.navbar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 25em;
+    left: 5em;
+    width: 9em}
+ul.navbar li {
+    background: rgb(44, 1, 37);
+    margin: 0.2em 0;
+    padding: 0.1em;
+    border: 0.1em solid black }
+ul.navbar a {
+    text-decoration: none }
+a:link {
+    color: blue }
+a:visited {
+    color: purple }     
+p {
+    font-family: 'Lobster', cursive;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 25em;
+    margin-right: 0}
+
+h5 a{
+    color: #D7AE3F
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 0em;
+    margin-left: 73em;
+    margin-right: 0em}
+
+h6  {
+        font-family: cursive;
+        display: block;
+        font-size: 20pt;
+        margin-top: 1em;
+        margin-bottom: 0em;
+        margin-left: 15em;
+        margin-right: 0em}
+    }
