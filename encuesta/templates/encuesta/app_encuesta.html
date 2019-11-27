@@ -14,22 +14,13 @@
     <img src="http://127.0.0.1:8000/static/interacción.png" height=200 width=1100>
   </div>
 
-  <h6>¿Qué tipo de interacción ves?</h6>
+  <h6>¿Qué tipo de interacción ves?</h6>   
+       <img src="{{ prueba_images.picture.url }}" class="img-responsive" height=200 width=200 /> 
+  </div> 
 
-
- <!--  <ul>
-      {% for image in object_list %}
-        <img src="{{image.picture.url}}"  height=200 width=200/>
-      {% endfor %}
-   </ul>-->  
   <form method="POST" class="choice-form">{% csrf_token %}
-      {{form.as_p}}
+    <h6>Interacción: {{form.voto}}</h6>
       <button type="submit" class="save btn btn-default">Guardar</button>
   </form>
-
 {% endblock %}
-<!--    <ul>
-      % for choice in Choice.objects.all %}
-        <img src="{choice.cover.url}}" alt="{ choice.usuario }}">
-      % endfor %}
-    </ul>-->
+

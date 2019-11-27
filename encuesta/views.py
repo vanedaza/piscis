@@ -9,12 +9,15 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.shortcuts import redirect
 from .models import *
-from .forms import ChoiceForm
-from .forms import AstronomerForm
+from .forms import ChoiceForm, AstronomerForm
 from django.contrib.auth import logout as do_logout
 from django.contrib.auth import login as do_login
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
+import random
+from django.template import RequestContext, Context
+from django.shortcuts import render_to_response
+from django.template.response import TemplateResponse
 
 #from django.views.generic import ListView
 #class HomePageView(ListView):
@@ -30,21 +33,27 @@ def contact_det(request):
 def desc_det(request):
     return render(request, 'encuesta/desc_det.html',{})
 
-def app_encuesta(request):
-#	all_choices = models.Choice.objects.all()
-#	image = random.choice(all_choices)
-	if request.method == "POST":
-		form = ChoiceForm(request.POST)
-		if form.is_valid():
-			choice = form.save(commit=False)
-			choice.usuario = request.user
-#			choice.cover = request.cover
-			choice.save()
-			return redirect('app_encuesta')
-	else:
-		form = ChoiceForm()
-		return render(request, 'encuesta/app_encuesta.html',{'form':form})
+import copy 
 
+def app_encuesta(request):
+    pks = Images.objects.values_list('pk', flat=True) # flat=True will remove the tuples and return the list 
+    random_idx = random.randint(1, len(pks))
+    m = copy.copy(random_idx - 1)
+    if request.method == "GET":
+        prueba = list(Images.objects.all())
+
+    if request.method == "POST":        
+        form = ChoiceForm(request.POST)         #construir el PostForm con datos del voto
+        if form.is_valid():                     #verifica si todos los datos son correctos
+            choice = form.save(commit=False)    #commit=False significa que no queremos guardar el modelo Choice, primero queremos guardar lo que sigue
+            choice.usuario = request.user
+            choice.imagen = Images.objects.get(pk=pks[m])   #guardamos el formulario
+            choice.save()                       #conservará los cambios (autor,voto,imagen) y se creará una nuevo objeto
+            return redirect('app_encuesta')
+    else:
+        form = ChoiceForm()
+    return render(request, 'encuesta/app_encuesta.html', {'form': form, 'prueba_images': prueba[m]}) 
+     
 def welcome(request):
     if request.user.is_authenticated:
         return render(request, 'encuesta/welcome.html')
