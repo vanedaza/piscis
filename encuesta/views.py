@@ -33,31 +33,29 @@ def contact_det(request):
 def desc_det(request):
     return render(request, 'encuesta/desc_det.html',{})
 
-import copy 
-
 def app_encuesta(request):
     pks = Images.objects.values_list('pk', flat=True) # flat=True will remove the tuples and return the list 
-    random_idx = random.randint(1, len(pks))
-    m = copy.copy(random_idx - 1)
-    if request.method == "GET":
-        prueba = list(Images.objects.all())
-
-    if request.method == "POST":        
-        form = ChoiceForm(request.POST)         #construir el PostForm con datos del voto
-        if form.is_valid():                     #verifica si todos los datos son correctos
-            choice = form.save(commit=False)    #commit=False significa que no queremos guardar el modelo Choice, primero queremos guardar lo que sigue
-            choice.usuario = request.user
-            choice.imagen = Images.objects.get(pk=pks[m])   #guardamos el formulario
-            choice.save()                       #conservará los cambios (autor,voto,imagen) y se creará una nuevo objeto
+    random_idx = random.randint(0, len(pks)-1) #tira un numero random
+    prueba = list(Images.objects.all()) #crea una lista con las imágenes
+    if request.method == "GET": # GET se ejecuta al ingresar o recargar la página
+        Choice.objects.filter(voto__exact='').delete() # remueve todas las encuestas que no tengan voto
+        form=ChoiceForm() # Crea el formulario
+        choice = form.save(commit=False) 
+        choice.imagen = Images.objects.get(pk=pks[random_idx]) # guarda la imagen random
+        choice.usuario = request.user # guarda el usuario
+        choice.save() # guarda en el formulario el pk, el usuario y la imagen
+        return render(request, 'encuesta/app_encuesta.html', {'form': form, 'prueba_images': prueba[random_idx]})
+    if request.method == "POST": # POST se ejecuta después de votar        
+        form = ChoiceForm(request.POST)        #construir el PostForm con datos del voto
+        if form.is_valid():                    #verifica si todos los datos son correctos
+            choice = form.save(commit=False)   #commit=False significa que no queremos guardar el modelo Choice, primero queremos guardar lo que sigue
+            choice_id=Choice.objects.values_list('pk',flat=True) # crea una lista con todos los pk de las encuesta
+            Choice.objects.filter(pk=max(choice_id)).update(voto=choice.voto) # Va a la última encuesta y agrega el vovot seleccionado
             return redirect('app_encuesta')
-    else:
-        form = ChoiceForm()
-    return render(request, 'encuesta/app_encuesta.html', {'form': form, 'prueba_images': prueba[m]}) 
      
 def welcome(request):
     if request.user.is_authenticated:
         return render(request, 'encuesta/welcome.html')
-
     return redirect('login')
 
 def registrar_usr(request):
