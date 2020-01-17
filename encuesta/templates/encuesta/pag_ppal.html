@@ -4,7 +4,7 @@
 <script>
         // Array con todas las imágenes que deseamos que se vayan cambiando a
         // cada clic
-        var imagenes=Array("static/fig1.jpeg", "static/fig2.jpeg","static/fig3.jpeg");
+        var imagenes=Array("static/Scatter_Mh_vs_Ms.png", "static/fig1.png");
         var imagenVisible=0;
      
         // Función que cambia la imagen actual por la siguiente
@@ -38,21 +38,21 @@
         }
 </script>
      
-<style>
-    img {cursor:pointer;}
-</style>
+        <style>
+        img {cursor:pointer;}
+        </style>
 
-<div>
-    <img src="static/fig1.jpeg" height=300 width=700 onclick="cambiar(this);" align=right>
-</div>
-
-<!-- Menú de navegación del sitio -->
-<ul class="navbar">
-	<h2><li><a href="{% url 'contact_det' %}">Contactos</a></h2>
-	<!--<p>¿Quienes somos?</p>-->
-    <h2><li><a href="{% url 'desc_det' %}">Descripción</a></h2>	
-	<h2><li><a href="{% url 'app_encuesta' %}">Encuesta</a></h2>
-    <!--<p>¡Participe de la encuesta!</p>-->
-</ul>
-
+    <div>
+           <img src="static/Scatter_Mh_vs_Ms.png" height=200 width=200 onclick="cambiar(this);">
+    </div>
+    <div>
+	<h2><a href="{% url 'contact_det' %}">Contactos</a></h2>
+	<p>¿Quienes somos?</p>
+    </div>
+    <div>
+	<h2><a href="{% url 'desc_det' %}">Descripción</a></h2>
+    </div>	
+	<h2><a href="{% url 'app_encuesta' %}">Encuesta</a></h2>
+	<p>¡Participe de la encuesta!</p>
+    </div>
 {% endblock %}
