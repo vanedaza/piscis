@@ -122,7 +122,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'                        # es la URL que podemos usar en nuestras plantillas para los archivos
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  #ruta absoluta de los archivos cargados por el usuario
 
 LOGIN_REDIRECT_URL = "index"

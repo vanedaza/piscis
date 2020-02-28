@@ -1,25 +1,25 @@
 {% extends 'encuesta/base.html' %}
 
 {% block content %}
+
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!}
-  <p><a href="{% url 'logout' %}">logout</a></p>
+  <h5><a href="/">Hola {{ user.username }}!</a>
+  <a href="{% url 'logout' %}">logout</a>
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
+You are not logged in
+  <a href="{% url 'login' %}">login</a></h5>
 {% endif %}
 
-    <div>
-        <img src="http://127.0.0.1:8000/static/Scatter_Mh_vs_Ms.png" height=200 width=200>
-    </div>
-    <h2>¿Qué tipo de interacción ves?</h2>
-<!--    <ul>
-      % for choice in Choice.objects.all %}
-        <img src="{choice.cover.url}}" alt="{ choice.usuario }}">
-      % endfor %}
-    </ul>-->
-    <form method="POST" class="choice-form">{% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class="save btn btn-default">Guardar</button>
-    </form>
+  <div>
+    <img src="http://127.0.0.1:8000/static/interacción.png" height=200 width=1100>
+  </div>
+
+  <h6>¿Qué tipo de interacción ves?</h6>   
+       <img src="{{ prueba_images.picture.url }}" class="img-responsive" height=200 width=200 /> 
+  </div> 
+
+  <form method="POST" class="choice-form">{% csrf_token %}
+    <h6>Interacción: {{form.voto}}</h6>
+      <button type="submit" class="save btn btn-default">Guardar</button>
+  </form>
 {% endblock %}
