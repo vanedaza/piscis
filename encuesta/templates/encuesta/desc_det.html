@@ -3,25 +3,30 @@
 {% block content %}
 
 <html>
+
+
     <head>
         <title>Proyecto Piscis</title>
-    </head>
-
-    <body>
-	<!--<img src="http://127.0.0.1:8000/static/images_page/idea_logo_Piscis.jpeg" height=150 width=1000";>-->
-	<h2>PROYECTO PISCIS</h2>
-	<p>PISCIS: Platform for Interactive Search and CItizen Science, tiene como objetivo recopilar información acerca de la interacción entre galaxias de parte del público.</p>
+	</head>
 	
-        <p>Cuando se estudia el universo a gran escala las <a href="http://astronomy.swin.edu.au/cosmos/G/Galaxy">galaxias</a> son los bloques fundamentales y principales objetos de interés. Sin embargo, no es usual encontrar galaxias aisladas por el universo  sino que por el contrario se les observa en agrupaciones que van desde denominaciones de grupos, <a href="https://imagine.gsfc.nasa.gov/science/objects/clusters.html">cúmulos</a> e incluso extructuras aun más grandes como supercúmulo. Se estudia su dinámica e interacciones a diferentes escalas. La Vía Láctea no es la excepción ya forma parte de un grupo donde domina a un conjunto de galaxias enanas y que a su vez como un todo forma parte de una asociación local de galaxias denominada "<a href="https://imagine.gsfc.nasa.gov/features/cosmic/local_group_info.html">Grupo Local</a>", que a su vez pasará a formar parte del <a href="http://www.atlasoftheuniverse.com/galgrps/vir.html">cúmulo de Virgo</a> ubicado en el filamento 14. Estudios sobre estas grandes agrupaciones de galaxias se llevan a cabo a través de amplias observaciones y catálogos como el <a href="https://www.sdss.org/">SDSS</a> (Sloan Digital Sky Survey) o el <a href="http://www.xray.mpe.mpg.de/cgi-bin/rosat/rosat-survey">RASS</a> (Rosat All Sky Survey) así como grandes proyectos de simulaciones como <a href="https://wwwmpa.mpa-garching.mpg.de/galform/virgo/millennium/">Millenium</a>, <a href="http://icc.dur.ac.uk/Eagle/index.php">EAGLE</a>, <a href="https://www.illustris-project.org/">Illustris</a> o <a href="https://www.tng-project.org/">TNG-Project</a> por lo cual las ciencias computacionales juegan un papel muy importante en el desarrollo de programas y códigos que permitan realizar simulaciones para la dinámica de objetos en el universo.</p>
+	<style>
+		.desc_det{padding: 10%;}
+	</style>
+    <body>
+	<div class="desc_det">
+			<h2>PROYECTO PISCIS</h2>
 
-	<p>La interacción más "pequeña" a escala escalas cósmicas está dada por la dinámica y encuentros entre pares de galaxias. A partir de un conjunto reducido de imágenes deseamos recopilar datos sobre el grado de inteacción, teniendo en cuenta únicamente su apariencia visual. Más adelante nos preocuparemos por estudiar más en detalle los aspectos físicos que describen el grado de interacción de estos pares de galaxias.</p>
+			<p style="text-align:justify;">La aplicación informática <b>PISCIS</b>: Plataform for Interactive Search and CItizen Science, construida sobre Django, un
+				  framework web de python de uso libre para el desarrollo de páginas web. El objetivo de este proyecto es brindar 
+				 una herramienta a la comunidad científica que facilite el proceso de generación de datos a partir de un conjunto imágenes 
+				 acompañadas de una encuesta, a través de una plataforma web de ciencia ciudadana. En particular mostramos la implementación 
+				 de PISCIS sobre un catálogo observacional de pares de galaxias destinado clasificar el tipo de interacción entre las mismas. 
+				 Mostramos también los principales resultados obtenidos tras su aplicación.</p>
 
-	<p>¿Te interesa saber acerca de la clasificación de los pares de galaxias? puede revisar el artículo de William C. Keel et al. (2013) <a href="https://arxiv.org/pdf/1211.6723.pdf">aquí.</a></p>
+			<p>Puedes acceder a toda al documentación del proyecto PISCIS en nuestro github <a href="https://github.com/mkoraj/piscis">aquí.</a></p>
 
-	<p>Puedes acceder a toda al documentación del proyecto PISCIS en nuestro github <a href="https://github.com/mkoraj/piscis">aquí.</a></p>
-
-	<img src="http://127.0.0.1:8000/static/images_page/git_log.png"  height=100 width=400";> <img src="http://127.0.0.1:8000/static/images_page/logo_python.png"  height=70 width=150";>
-
+			<!--<img src="http://127.0.0.1:8000/static/images_page/git_log.png"  height=100 width=400";> <img src="http://127.0.0.1:8000/static/images_page/logo_python.png"  height=70 width=150";>-->
+	</div>
     </body>
 </html>
 

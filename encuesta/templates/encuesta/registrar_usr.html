@@ -1,18 +1,17 @@
 {% extends 'encuesta/base.html' %}
 
-<!--% block content %}
-    <h2>Registrar usuario</h2>
-    <form method="POST">
-        { form.as_p }}
-        % csrf_token %}
-        <button type="submit">Registrar</button>
-    </form>
-    <hr />
-    <a href="accounts/login">Iniciar sesión</a>
-% endblock %}-->
-
 {% block content %}
-  <h2>Sign up</h2>
+
+  <style>
+    .registro{
+      padding: 2%;
+      }
+  </style>
+  <head>
+    <title>Registro</title>
+  </head>
+  <div class="registro">
+  <h2>Regístrate</h2>
   <form method="POST">
     {% csrf_token %}
       {% for field in form %}
@@ -27,6 +26,7 @@
         {% endfor %}
       </p>
       {% endfor %}
-    <button type="submit">Sign up</button>
+      <button type="submit">Sign up</button>
   </form>
+  </div>
 {% endblock %}

@@ -1,58 +1,194 @@
 {% extends 'encuesta/base.html' %}
 
 {% block content %}
-<script>
-        // Array con todas las imágenes que deseamos que se vayan cambiando a
-        // cada clic
-        var imagenes=Array("static/fig1.jpeg", "static/fig2.jpeg","static/fig3.jpeg");
-        var imagenVisible=0;
-     
-        // Función que cambia la imagen actual por la siguiente
-        function cambiar(img)
-        {
-            imagenVisible++;
-            if(imagenVisible>=imagenes.length)
-            {
-                imagenVisible=0;
-            }
-            img.src=imagenes[imagenVisible];
-            cargarSiguienteImagen();
-        }
-     
-        /**
-         * Esta función carga la siguiente imagen para no tener que esperar su carga
-         * en el momento de mostrarla.
-         */
-        function cargarSiguienteImagen()
-        {
-            if((imagenVisible+1)<imagenes.length)
-            {
-                console.log(imagenVisible+1);
-                var imgTmp=new Image();
-                imgTmp.src=imagenes[imagenVisible+1];
-            }
-        }
-     
-        window.onload=function() {
-            cargarSiguienteImagen();
-        }
-</script>
-     
 <style>
-    img {cursor:pointer;}
-</style>
 
-<div>
-    <img src="static/fig1.jpeg" height=300 width=700 onclick="cambiar(this);" align=right>
-</div>
+    * {box-sizing: border-box;}
+    body {font-family: Verdana, sans-serif;}
 
-<!-- Menú de navegación del sitio -->
-<ul class="navbar">
-	<h2><li><a href="{% url 'contact_det' %}">Contactos</a></h2>
-	<!--<p>¿Quienes somos?</p>-->
-    <h2><li><a href="{% url 'desc_det' %}">Descripción</a></h2>	
-	<h2><li><a href="{% url 'app_encuesta' %}">Encuesta</a></h2>
-    <!--<p>¡Participe de la encuesta!</p>-->
-</ul>
+    .contenedor{
+      margin: auto;
+      margin-top: 50px;
+      width: 90%;
+      height: 800px;
+    }
+
+    .parrafo_pag_ppal{
+      float:left;
+      width: 900px;
+      height: 350px;
+      position: relative;
+      margin: auto;
+      padding: 0px;
+    }
+    
+    .mySlides {display: none; }
+    img {width: 100%;
+      position: relative;}
+
+     
+    
+    /* Slideshow container */
+    .slideshow-container {
+      max-width: 40%;
+      max-height: 40%;
+      position: relative;
+      margin: auto;
+      float: right;
+      padding: 4%;
+    }
+    
+    /* Caption text */
+    .text {
+      color: #f2f2f2;
+      font-size: 15px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+    }
+    
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+    
+    /* The dots/bullets/indicators */
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      position: relative;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+    
+    .active {
+      background-color: #717171;
+    }
+    
+    /* Fading animation */
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 1.5s;
+      animation-name: fade;
+      animation-duration: 5.5s;
+    }
+    
+    @-webkit-keyframes fade {
+      from {opacity: .9} 
+      to {opacity: 1}
+    }
+    
+    @keyframes fade {
+      from {opacity: .9} 
+      to {opacity: 1}
+    } 
+    </style>
+
+
+    <head>
+      <title>PISCIS</title>
+    </head>
+
+  <body>
+    <!--Bienvenidad-->
+    <p style="padding: 2%; font-size: 118%;">
+      Hola, gracias por visitar nuestra plataforma, para participar de nuestro proyecto dirijite a la pestaña login y registrate. 
+      Luego dirigete a la pestaña ENCUESTA.
+    </p>
+    <div class="contenedor">
+    <div class="parrafo_pag_ppal"> 
+    <h2>Pares de Galaxias</h2>
+    <p style="text-align:justify;">En esta oportunidad, PISCIS: Platform for Interactive Search and CItizen Science, tiene como objetivo recopilar información acerca de la interacción 
+      entre galaxias de parte del público.</p>
+	
+    <p style="text-align:justify;">Cuando se estudia el universo a gran escala 
+      las <a href="http://astronomy.swin.edu.au/cosmos/G/Galaxy">galaxias</a> son los bloques fundamentales y principales objetos 
+      de interés. Sin embargo, no es usual encontrar galaxias aisladas por el universo  sino que por el contrario se les observa 
+      en agrupaciones que van desde denominaciones de grupos, 
+      <a href="https://imagine.gsfc.nasa.gov/science/objects/clusters.html">cúmulos</a> e incluso extructuras aun más grandes como 
+      supercúmulo. Se estudia su dinámica e interacciones a diferentes escalas. La Vía Láctea no es la excepción ya forma parte de un 
+      grupo donde domina a un conjunto de galaxias enanas y que a su vez como un todo forma parte de una asociación local de galaxias 
+      denominada "<a href="https://imagine.gsfc.nasa.gov/features/cosmic/local_group_info.html">Grupo Local</a>", que a su vez pasará a 
+      formar parte del <a href="http://www.atlasoftheuniverse.com/galgrps/vir.html">cúmulo de Virgo</a> ubicado en el filamento 14. 
+      Estudios sobre estas grandes agrupaciones de galaxias se llevan a cabo a través de amplias observaciones y catálogos como 
+      el <a href="https://www.sdss.org/">SDSS</a> (Sloan Digital Sky Survey) o 
+      el <a href="http://www.xray.mpe.mpg.de/cgi-bin/rosat/rosat-survey">RASS</a> (Rosat All Sky Survey) así como grandes proyectos 
+      de simulaciones como <a href="https://wwwmpa.mpa-garching.mpg.de/galform/virgo/millennium/">Millenium</a>, 
+      <a href="http://icc.dur.ac.uk/Eagle/index.php">EAGLE</a>, <a href="https://www.illustris-project.org/">Illustris</a> 
+      o <a href="https://www.tng-project.org/">TNG-Project</a> por lo cual las ciencias computacionales juegan un papel muy importante 
+      en el desarrollo de programas y códigos que permitan realizar simulaciones para la dinámica de objetos en el universo.</p>
+
+    <p style="text-align:justify;">La interacción más "pequeña" a escala escalas cósmicas está dada por la dinámica y encuentros entre 
+      pares de galaxias. A partir de un conjunto reducido de imágenes deseamos recopilar datos sobre el grado de inteacción, teniendo 
+      en cuenta únicamente su apariencia visual. Más adelante nos preocuparemos por estudiar más en detalle los aspectos físicos que 
+      describen el grado de interacción de estos pares de galaxias.</p>
+
+		<p>¿Te interesa saber acerca de la clasificación de los pares de galaxias? puede revisar el artículo de William C. Keel et al. 
+      (2013) <a href="https://arxiv.org/pdf/1211.6723.pdf">aquí.</a></p>
+    </div>
+
+
+    <!--Imagenes-->
+      
+    <div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <img src="http://127.0.0.1:8000/static/images_page/2MASS_1000plx_img.png" >
+      <div class="text">Caption Text</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img src="http://127.0.0.1:8000/static/images_page/SDSS_1000plx_img.png" >
+      <div class="text">Caption Two</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="http://127.0.0.1:8000/static/images_page/WISE_1000plx_img.png" >
+      <div class="text">Caption Three</div>
+    </div>
+
+    <div> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span>  
+    </div>
+    </div>
+    </div>
+  </body>
+
+    
+    <script>
+    var slideIndex = 0;
+    showSlides();
+    
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+      setTimeout(showSlides, 1000); // Change image every 2 seconds
+    }
+    </script>
 
 {% endblock %}
