@@ -17,17 +17,36 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Images',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                 primary_key=True, serialize=False,
+                 verbose_name='ID')
+                 ),
                 ('picture', models.ImageField(upload_to='image')),
             ],
         ),
         migrations.CreateModel(
             name='Choice',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('voto', models.CharField(choices=[('A', 'Alta'), ('B', 'Baja'), ('C', 'Media')], max_length=200)),
-                ('imagen', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='encuesta.Images')),
-                ('usuario', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('id', models.AutoField(auto_created=True,
+                 primary_key=True,
+                 serialize=False,
+                 verbose_name='ID')
+                 ),
+                ('voto', models.CharField(choices=[
+                    ('A', 'Alta'),
+                    ('B', 'Baja'),
+                    ('C', 'Media')
+                    ],
+                    max_length=200)),
+                ('imagen', models.ForeignKey(blank=True,
+                 null=True,
+                 on_delete=django.db.models.deletion.CASCADE,
+                 to='encuesta.Images')
+                 ),
+                ('usuario', models.ForeignKey(
+                 on_delete=django.db.models.deletion.CASCADE,
+                 to=settings.AUTH_USER_MODEL)
+                 ),
             ],
         ),
     ]
