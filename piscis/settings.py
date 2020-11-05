@@ -129,4 +129,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  #ruta absoluta de los archivos car
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-from local_settings import *
+from .local_settings import *
