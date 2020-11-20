@@ -1,6 +1,7 @@
 {% extends 'encuesta/base.html' %}
 
 {% block content %}
+{% load static %}
 <style>
 
     * {box-sizing: border-box;}
@@ -143,19 +144,19 @@
 
     <div class="mySlides fade">
       <div class="numbertext">1 / 3</div>
-      <img src="http://127.0.0.1:8000/static/images_page/2MASS_1000plx_img.png" >
+      <img class="img-responsive" src="{% static 'images_page/2MASS_1000plx_img.png' %}" alt="">
       <div class="text">Caption Text</div>
     </div>
     
     <div class="mySlides fade">
       <div class="numbertext">2 / 3</div>
-      <img src="http://127.0.0.1:8000/static/images_page/SDSS_1000plx_img.png" >
+      <img class="img-responsive" src="{% static 'images_page/SDSS_1000plx_img.png' %}" alt="">
       <div class="text">Caption Two</div>
     </div>
     
     <div class="mySlides fade">
       <div class="numbertext">3 / 3</div>
-      <img src="http://127.0.0.1:8000/static/images_page/WISE_1000plx_img.png" >
+      <img class="img-responsive" src="{% static 'images_page/WISE_1000plx_img.png' %}" alt="" >
       <div class="text">Caption Three</div>
     </div>
 
