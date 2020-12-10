@@ -1,28 +1,20 @@
-from django.http import HttpResponse
+import random
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as do_login
+from django.contrib.auth import logout as do_logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
+from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.shortcuts import render
+from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.template.loader import render_to_string
-from .tokens import account_activation_token
-from django.core.mail import EmailMessage
-from django.contrib.auth.models import User
-from django.shortcuts import render
-from django.shortcuts import redirect
-from .models import *
 from .forms import ChoiceForm, AstronomerForm
-from django.contrib.auth import logout as do_logout
-from django.contrib.auth import login as do_login
-from django.contrib.auth import authenticate
-from django.contrib.auth.forms import AuthenticationForm
-import random
-
-# from django.template import RequestContext, Context
-# from django.shortcuts import render_to_response
-# from django.template.response import TemplateResponse
-# from django.views.generic import ListView
-# class HomePageView(ListView):
-#    model = Images
-#    template_name = 'encuesta/app_encuesta.html'
+from .models import Choice, Images
+from .tokens import account_activation_token
 
 
 def pag_ppal(request):
@@ -38,23 +30,25 @@ def desc_det(request):
 
 
 def app_encuesta(request):
-    pks = Images.objects.values_list('pk', flat=True)  # flat=True change tuples to list
-    random_idx = random.randint(0, len(pks)-1)  # Tira un numero random
-    prueba = list(Images.objects.all())  # Crea una lista con las imágenes
-    if request.method == "GET":  # GET se ejecuta al ingresar o recargar la página
-        Choice.objects.filter(voto__exact='').delete()  # remueve todas las encuestas que no tengan voto
-        form = ChoiceForm()  # Crea el formulario
+    pks = Images.objects.values_list('pk', flat=True)
+    random_idx = random.randint(0, len(pks)-1)
+    prueba = list(Images.objects.all())
+    if request.method == "GET":
+        Choice.objects.filter(voto__exact='').delete()
+        form = ChoiceForm()
         choice = form.save(commit=False)
-        choice.imagen = Images.objects.get(pk=pks[random_idx])  # guarda la imagen random
-        choice.usuario = request.user  # guarda el usuario
-        choice.save()  # guarda en el formulario el pk, el usuario y la imagen
-        return render(request, 'encuesta/app_encuesta.html', {'form': form, 'prueba_images': prueba[random_idx]})
-    if request.method == "POST":  # POST se ejecuta después de votar
-        form = ChoiceForm(request.POST)  # construir el PostForm con datos del voto
-        if form.is_valid():  # verifica si todos los datos son correctos
-            choice = form.save(commit=False)  # commit=False significa que no queremos guardar el modelo Choice, primero queremos guardar lo que sigue
-            choice_id = Choice.objects.values_list('pk', flat=True)  # crea una lista con todos los pk de las encuesta
-            Choice.objects.filter(pk=max(choice_id)).update(voto=choice.voto)  # Va a la última encuesta y agrega el vovot seleccionado
+        choice.imagen = Images.objects.get(pk=pks[random_idx])
+        choice.usuario = request.user
+        choice.save()
+        return render(request, 'encuesta/app_encuesta.html',
+                      {'form': form, 'prueba_images': prueba[random_idx]}
+                      )
+    if request.method == "POST":
+        form = ChoiceForm(request.POST)
+        if form.is_valid():
+            choice = form.save(commit=False)
+            choice_id = Choice.objects.values_list('pk', flat=True)
+            Choice.objects.filter(pk=max(choice_id)).update(voto=choice.voto)
             return redirect('app_encuesta')
 
 
@@ -85,7 +79,7 @@ def registrar_usr(request):
                         email_subject, message, to=[to_email]
             )
             email.send()
-            return HttpResponse('Por favor confirme su cuenta de mail para completar el registro')
+            return HttpResponse('Confirme su mail para completar el registro')
             if user is not None:
                 do_login(request, user)
                 return redirect('pag_ppal')
@@ -106,8 +100,6 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         do_login(request, user)
-        # return redirect('home')
-#        return HttpResponse('Gracias por confirmar su correo. Ahora puedes acceder a tu cuenta.')
         return redirect('app_encuesta')
     else:
         return HttpResponse('Link de activación invalido!')

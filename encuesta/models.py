@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 
 
 class Images(models.Model):
@@ -7,7 +7,6 @@ class Images(models.Model):
 
 
 class Choice(models.Model):
-
     """For a uploaded image, allow select between three different
     types one to classify it"""
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
