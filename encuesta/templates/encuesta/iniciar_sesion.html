@@ -7,12 +7,13 @@
 <form method="POST">
     {{ form.as_p }}
     {% csrf_token %}
-    <button type="submit">Login</button>
+    <button type="submit">iniciar_sesion</button>
 </form>
 
 <hr />
 <div>
-<a href="/register">Registrar usuario</a>
+    <a href="/register">Registrar usuario</a>
 </div>
-<a href="http://127.0.0.1:8000/accounts/login/reset/">Olvidé mi contaseña</a>
+<a href="http://127.0.0.1:8000/accounts/iniciar_sesion/reset/">Olvidé mi contaseña</a>
+
 {% endblock %}

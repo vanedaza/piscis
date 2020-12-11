@@ -1,6 +1,6 @@
 import random
 from django.contrib.auth import authenticate
-from django.contrib.auth import login as do_login
+from django.contrib.auth import login as do_iniciar_sesion
 from django.contrib.auth import logout as do_logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
@@ -17,19 +17,19 @@ from .models import Choice, Images
 from .tokens import account_activation_token
 
 
-def pag_ppal(request):
-    return render(request, 'encuesta/pag_ppal.html', {})
+def inicio(request):
+    return render(request, 'encuesta/inicio.html', {})
 
 
-def contact_det(request):
-    return render(request, 'encuesta/contact_det.html', {})
+def contacto(request):
+    return render(request, 'encuesta/contacto.html', {})
 
 
-def desc_det(request):
-    return render(request, 'encuesta/desc_det.html', {})
+def proyecto(request):
+    return render(request, 'encuesta/proyecto.html', {})
 
 
-def app_encuesta(request):
+def voto(request):
     pks = Images.objects.values_list('pk', flat=True)
     random_idx = random.randint(0, len(pks)-1)
     prueba = list(Images.objects.all())
@@ -40,7 +40,7 @@ def app_encuesta(request):
         choice.imagen = Images.objects.get(pk=pks[random_idx])
         choice.usuario = request.user
         choice.save()
-        return render(request, 'encuesta/app_encuesta.html',
+        return render(request, 'encuesta/voto.html',
                       {'form': form, 'prueba_images': prueba[random_idx]}
                       )
     if request.method == "POST":
@@ -49,14 +49,14 @@ def app_encuesta(request):
             choice = form.save(commit=False)
             choice_id = Choice.objects.values_list('pk', flat=True)
             Choice.objects.filter(pk=max(choice_id)).update(voto=choice.voto)
-            return redirect('app_encuesta')
+            return redirect('voto')
 
 
 def welcome(request):
     if request.user.is_authenticated:
         return render(request, 'encuesta/welcome.html')
 
-    return redirect('login')
+    return redirect('iniciar_sesion')
 
 
 def registrar_usr(request):
@@ -68,7 +68,7 @@ def registrar_usr(request):
             user.save()
             current_site = get_current_site(request)
             email_subject = 'Activa tu cuenta de PISCIS.'
-            message = render_to_string('encuesta/acc_active_email.html', {
+            message = render_to_string('encuesta/activar_correo.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
@@ -81,8 +81,8 @@ def registrar_usr(request):
             email.send()
             return HttpResponse('Confirme su mail para completar el registro')
             if user is not None:
-                do_login(request, user)
-                return redirect('pag_ppal')
+                do_iniciar_sesion(request, user)
+                return redirect('inicio')
     else:
         form = AstronomerForm()
     form.fields['username'].help_text = None
@@ -99,13 +99,13 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        do_login(request, user)
-        return redirect('app_encuesta')
+        do_iniciar_sesion(request, user)
+        return redirect('voto')
     else:
         return HttpResponse('Link de activación invalido!')
 
 
-def login(request):
+def iniciar_sesion(request):
     form = AuthenticationForm()
     if request.method == "POST":
         form = AuthenticationForm(data=request.POST)
@@ -114,10 +114,10 @@ def login(request):
             password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
             if user is not None:
-                do_login(request, user)
-                return redirect('pag_ppal')
+                do_iniciar_sesion(request, user)
+                return redirect('inicio')
 
-    return render(request, 'encuesta/login.html', {'form': form})
+    return render(request, 'encuesta/iniciar_sesion.html', {'form': form})
 
 
 def logout(request):

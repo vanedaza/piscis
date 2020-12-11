@@ -2,15 +2,17 @@
 
 {% block content %}
 
-  <style>
-    .registro{
-      padding: 2%;
-      }
-  </style>
-  <head>
-    <title>Registro</title>
-  </head>
-  <div class="registro">
+<style>
+  .registro{
+    padding: 2%;
+  }
+</style>
+
+<head>
+  <title>Registro</title>
+</head>
+
+<div class="registro">
   <h2>Regístrate</h2>
   <form method="POST">
     {% csrf_token %}
@@ -26,7 +28,8 @@
         {% endfor %}
       </p>
       {% endfor %}
-      <button type="submit">Sign up</button>
+    <button type="submit">Sign up</button>
   </form>
-  </div>
+</div>
+
 {% endblock %}
