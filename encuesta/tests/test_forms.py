@@ -2,8 +2,8 @@ from django.test import TestCase
 
 # Create your tests here.
 
-class ChoiceFormTest(TestCase):
 
+class ChoiceFormTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         pass
@@ -11,8 +11,8 @@ class ChoiceFormTest(TestCase):
     def setUp(self):
         pass
 
-class AstronomerFormTest(TestCase):
 
+class AstronomerFormTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         pass

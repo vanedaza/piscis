@@ -7,7 +7,10 @@ from .models import Choice
 class ChoiceForm(forms.ModelForm):
     class Meta:
         model = Choice
-        fields = ('voto', 'imagen', )
+        fields = (
+            "voto",
+            "imagen",
+        )
 
 
 class AstronomerForm(UserCreationForm):
@@ -15,4 +18,9 @@ class AstronomerForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ["username", "email", "password1", "password2", ]
+        fields = [
+            "username",
+            "email",
+            "password1",
+            "password2",
+        ]
