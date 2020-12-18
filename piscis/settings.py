@@ -38,6 +38,22 @@ INSTALLED_APPS = [
     "encuesta",
 ]
 
+THIRD_PARTY_APPS = [
+    'django_nose'
+]
+
+#Django-nose Measuring coverage
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-html',
+    '--cover-html-dir=htmlcov'
+    '--cover-package=cart',
+]
+
+
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 # Create your tests here.
 
-image_path = "/home/galfaro/Doctorado/Dis_software/PISCIS/piscis/media/image/par_glx_Nr_1.png"
+image_path = "media/" + "image/par_glx_Nr_1.png"
 
 
 class ImagesTest(TestCase):
