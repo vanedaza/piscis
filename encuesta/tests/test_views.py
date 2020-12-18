@@ -2,7 +2,8 @@ from django.test import TestCase, Client
 from django.urls import reverse
 
 
-class TestPage(TestCase):
+class TestStaticPages(TestCase):
+    # Páginas que solo muestran un archivo ".html"
     def setUp(self):
         self.client = Client()
 
@@ -25,3 +26,23 @@ class TestPage(TestCase):
         self.assertContains(response, "Encuesta")
         self.assertContains(response, "iniciar_sesion")
         self.assertContains(response, "registrate")
+
+    def test_pag_contacto(self):
+        url = reverse("contacto")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_pag_contacto2(self):
+        url = reverse("contacto")
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, "encuesta/contacto.html")
+
+    def test_pag_proyecto(self):
+        url = reverse("proyecto")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_pag_proyecto2(self):
+        url = reverse("proyecto")
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, "encuesta/proyecto.html")
