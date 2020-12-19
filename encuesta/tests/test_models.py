@@ -1,6 +1,7 @@
-from django.test import TestCase
-from encuesta.models import Images, Choice
+from django.test import TestCase, RequestFactory
 from django.contrib.auth.models import User
+from encuesta.models import Images, Choice
+
 
 
 class Setup_Choice(TestCase):

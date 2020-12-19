@@ -62,6 +62,8 @@ def welcome(request):
 
 
 def registrar_usr(request):
+    '''This is funtion load the data the user'''
+    
     if request.method == "POST":
         form = AstronomerForm(data=request.POST)
         if form.is_valid():
