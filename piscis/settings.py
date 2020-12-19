@@ -35,12 +35,16 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "encuesta",
+    'encuesta',
 ]
 
 THIRD_PARTY_APPS = [
     'django_nose'
 ]
+
+
+#INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS 
+
 
 #Django-nose Measuring coverage
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -48,8 +52,8 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
     '--with-coverage',
     '--cover-html',
-    '--cover-html-dir=htmlcov'
-    '--cover-package=cart',
+#    '--cover-html-dir=htmlcov'
+    '--cover-package=encuesta',
 ]
 
 
