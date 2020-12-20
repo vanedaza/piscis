@@ -1,8 +1,10 @@
-from django.test import TestCase, Client
+from django.test import TestCase, Client, RequestFactory
 from django.urls import reverse
-from http import HTTPStatus
 from encuesta.forms import AstronomerForm
 from django.contrib.auth.models import User
+from encuesta.models import Images
+from django.core.files import File
+
 
 class TestStaticPages(TestCase):
     # Páginas que solo muestran un archivo ".html"
@@ -22,7 +24,7 @@ class TestStaticPages(TestCase):
         self.assertTemplateUsed(response, "encuesta/inicio.html")
 
     def test_pag_inicio3(self):
-        # Verifica el template muestre las palabras "Encuesta", "Iniciar seción", "registrate"
+        # El template muestra "Encuesta", "Iniciar seción", "registrate"
         url = reverse("inicio")
         response = self.client.get(url)
         self.assertContains(response, "Encuesta")
@@ -50,20 +52,7 @@ class TestStaticPages(TestCase):
         self.assertTemplateUsed(response, "encuesta/proyecto.html")
 
 
-
-
-class TestRegitrarUsr(TestCase):
-    # Páginas que solo muestran un archivo ".html"
-    def setUp(self):
-        self.client = Client() #lo usamos como un navegador artificial
-
-    def test_registrar(self):
-        form = AstronomerForm()
-
-
 class TestIniciarSesion(TestCase):
-
-
     def test_redirect_if_not_logged_in(self):
         form = AstronomerForm(
             data={
@@ -74,7 +63,64 @@ class TestIniciarSesion(TestCase):
             }
         )
         form.save()
-        
-        response = self.client.post(reverse('iniciar_sesion'), {'username': 'user', 'password': 'user1234'}, follow=True)
-        self.assertRedirects(response, reverse('inicio'))
 
+        response = self.client.post(
+            reverse("iniciar_sesion"),
+            {"username": "user", "password": "user1234"},
+            follow=True,
+        )
+        self.assertRedirects(response, reverse("inicio"))
+
+    def test_render_not_logg(self):
+        self.client = Client()
+        url = reverse("iniciar_sesion")
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, "encuesta/iniciar_sesion.html")
+
+
+class TestWelcomePage(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_pag_welcome_login(self):
+        # Verifica si la pagina responde a un usuario loggeado
+        c = Client()
+        user = User()
+        user.save()
+        c.force_login(user)
+        url = reverse("welcome")
+        response = c.get(url)
+        self.assertEqual(response.status_code, 200)
+
+
+class TestLogOut(TestCase):
+    # Páginas que solo muestran un archivo ".html"
+    def setUp(self):
+        self.client = Client()
+
+    def test_log_out(self):
+        # Verifica si el código responde
+        url = reverse("logout")
+        response = self.client.get(url)
+        self.assertRedirects(response, "/usuario/", target_status_code=302)
+
+
+class TestVotePages(TestCase):
+    @classmethod
+    # Páginas que solo muestran un archivo ".html"
+    def setUp(self):
+        self.request_factory = RequestFactory()
+        image_path = "media/" + "image/par_glx_Nr_1.png"
+        imagen_prueba = Images()
+        imagen_prueba.picture = File(open(image_path, "rb"))
+        imagen_prueba.save()
+        self.user = User.objects.create(
+            username="javed",
+            email="javed@javed.com",
+            password="fsdfdsmy_secret",
+        )
+
+    def test_voto_get_usuario_logg(self):
+        request = self.request_factory.get(reverse("voto"))
+        request.user = self.user
+        self.assertTemplateUsed("encuesta/voto.html")
