@@ -124,3 +124,15 @@ class TestVotePages(TestCase):
         request = self.request_factory.get(reverse("voto"))
         request.user = self.user
         self.assertTemplateUsed("encuesta/voto.html")
+
+from django.http import HttpRequest
+from django.http import HttpResponse
+class TestRegitrarUsr(TestCase):
+   
+    def test_render_not_logg(self):
+        self.client = Client()
+        url = reverse("register")
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, "encuesta/registrar_usr.html")
+
+
