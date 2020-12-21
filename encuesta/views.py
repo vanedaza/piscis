@@ -1,4 +1,5 @@
 import random
+
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as do_iniciar_sesion
 from django.contrib.auth import logout as do_logout
@@ -11,8 +12,9 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from .forms import ChoiceForm, AstronomerForm
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+
+from .forms import AstronomerForm, ChoiceForm
 from .models import Choice, Images
 from .tokens import account_activation_token
 
@@ -62,8 +64,8 @@ def welcome(request):
 
 
 def registrar_usr(request):
-    '''This is funtion load the data the user'''
-    
+    """This is funtion load the data the user"""
+
     if request.method == "POST":
         form = AstronomerForm(data=request.POST)
         if form.is_valid():

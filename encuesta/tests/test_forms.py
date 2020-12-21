@@ -1,5 +1,6 @@
 from django.test import TestCase
-from encuesta.forms import ChoiceForm, AstronomerForm
+
+from encuesta.forms import AstronomerForm, ChoiceForm
 
 
 class Setup_Class_Choice(TestCase):
