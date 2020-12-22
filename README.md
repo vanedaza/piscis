@@ -1,6 +1,13 @@
 # PISCIS : Platform for Interactive Search and Citizen Science
-<table><tr><td><img src='/home/vanessa/Escritorio/log_piscis.png'></td></tr></table>
+<div class="alert alert-block alert-warning">
 
+<table><tr><td><img src='/home/vanessa/Escritorio/log_piscis.png'></td></tr></table>
+</div>
+
+<div class="alert alert-block alert-warning">
+
+<table><tr><td><img src='log_piscis.png'></td></tr></table>
+</div>
 
 Piscis is an app that allows users to vote for the type of interaction observed in images of galaxies pair. 
 
