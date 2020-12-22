@@ -2,6 +2,12 @@
 
 |Build Status|  |MIT| |Documentation Status| 
 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/ivco19/libs.svg?branch=master)](https://travis-ci.com/github/vanedaza/piscis)
+[![Documentation Status](https://readthedocs.org/projects/arcovid19/badge/?version=latest)](https://arcovid19.readthedocs.io/en/latest/?badge=latest)
+
+
 <div class="alert alert-block alert-warning">
 
 <table><tr><td><img src='log_piscis.png'></td></tr></table>
@@ -98,9 +104,4 @@ If you prefer, you can create a  virtual environment of conda o pip:
 </div>
 
 
-.. |Build Status| image:: https://travis-ci.org/ivco19/libs.svg?branch=master
-   :target: https://travis-ci.com/github/vanedaza/piscis
-.. |MIT| image:: https://img.shields.io/badge/License-MIT-blue.svg
-   :target: https://tldrlegal.com/license/mit-license
-.. |Documentation Status| image:: https://readthedocs.org/projects/arcovid19/badge/?version=latest
-   :target: https://arcovid19.readthedocs.io/en/latest/?badge=latest
+
