@@ -52,6 +52,25 @@ class TestStaticPages(TestCase):
         response = self.client.get(url)
         self.assertTemplateUsed(response, "encuesta/proyecto.html")
 
+class TestVotePages(TestCase):
+    @classmethod
+    # Páginas que solo muestran un archivo ".html"
+    def setUpTestData(clf):
+        clf.request_factory = RequestFactory()
+        image_path = "media/" + "image/par_glx_Nr_1.png"
+        imagen_prueba = Images()
+        imagen_prueba.picture = File(open(image_path, "rb"))
+        clf.user = User.objects.create(
+            username="javed",
+            email="javed@javed.com",
+            password="fsdfdsmy_secret",
+        )
+
+    def test_voto_get_usuario_logg(clf):
+        request = clf.request_factory.get(reverse("voto"))
+        request.user = clf.user
+        clf.assertTemplateUsed("encuesta/voto.html")
+
 
 class TestIniciarSesion(TestCase):
     def test_redirect_if_not_logged_in(self):
@@ -77,6 +96,7 @@ class TestIniciarSesion(TestCase):
         url = reverse("iniciar_sesion")
         response = self.client.get(url)
         self.assertTemplateUsed(response, "encuesta/iniciar_sesion.html")
+
 
 
 class TestWelcomePage(TestCase):
@@ -106,22 +126,4 @@ class TestLogOut(TestCase):
         self.assertRedirects(response, "/usuario/", target_status_code=302)
 
 
-class TestVotePages(TestCase):
-    @classmethod
-    # Páginas que solo muestran un archivo ".html"
-    def setUp(self):
-        self.request_factory = RequestFactory()
-        image_path = "media/" + "image/par_glx_Nr_1.png"
-        imagen_prueba = Images()
-        imagen_prueba.picture = File(open(image_path, "rb"))
-        imagen_prueba.save()
-        self.user = User.objects.create(
-            username="javed",
-            email="javed@javed.com",
-            password="fsdfdsmy_secret",
-        )
 
-    def test_voto_get_usuario_logg(self):
-        request = self.request_factory.get(reverse("voto"))
-        request.user = self.user
-        self.assertTemplateUsed("encuesta/voto.html")

@@ -5,8 +5,8 @@ from encuesta.models import Choice, Images
 
 
 class Setup_Choice(TestCase):
-    def setUp(self):
-        self.choice = Choice.objects.create(
+    def setUpTestData(clf):
+        clf.choice = Choice.objects.create(
             usuario="user", imagen="Image_name", voto="A"
         )
 
@@ -17,6 +17,5 @@ class Choice_Test(TestCase):
         user = User()
         user.save()
         imagen_test = Images()
-        imagen_test.save()
         choice = Choice(usuario=user, imagen=imagen_test, voto="A")
         self.assertEqual(choice.voto, "A")
