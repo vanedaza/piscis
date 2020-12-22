@@ -52,6 +52,7 @@ class TestStaticPages(TestCase):
         response = self.client.get(url)
         self.assertTemplateUsed(response, "encuesta/proyecto.html")
 
+
 class TestVotePages(TestCase):
     @classmethod
     # Páginas que solo muestran un archivo ".html"
@@ -98,7 +99,6 @@ class TestIniciarSesion(TestCase):
         self.assertTemplateUsed(response, "encuesta/iniciar_sesion.html")
 
 
-
 class TestWelcomePage(TestCase):
     def setUp(self):
         self.client = Client()
@@ -124,6 +124,3 @@ class TestLogOut(TestCase):
         url = reverse("logout")
         response = self.client.get(url)
         self.assertRedirects(response, "/usuario/", target_status_code=302)
-
-
-
