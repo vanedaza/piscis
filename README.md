@@ -1,8 +1,4 @@
 # PISCIS : Platform for Interactive Search and Citizen Science
-<div class="alert alert-block alert-warning">
-
-<table><tr><td><img src='/home/vanessa/Escritorio/log_piscis.png'></td></tr></table>
-</div>
 
 <div class="alert alert-block alert-warning">
 
