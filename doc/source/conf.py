@@ -50,11 +50,11 @@ extensions = ['sphinx.ext.autodoc',
 ]
 
 # nbsphinx
-nbsphinx_execute = 'always'
+#nbsphinx_execute = 'always'
 
-nbsphinx_execute_arguments = [
-    "--InlineBackend.figure_formats={'svg', 'pdf'}",
-    "--InlineBackend.rc={'figure.dpi': 96}",
+#nbsphinx_execute_arguments = [
+#    "--InlineBackend.figure_formats={'svg', 'pdf'}",
+#    "--InlineBackend.rc={'figure.dpi': 96}",
 ]
 
 
