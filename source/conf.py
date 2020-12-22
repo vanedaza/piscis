@@ -60,3 +60,7 @@ html_static_path = ['_static']
 
 #redthedocs
 master_doc = 'index'
+
+import pathlib
+CURRENT_PATH = pathlib.Path(os.path.abspath(os.path.dirname(__file__)))
+MYAPP_PATH = CURRENT_PATH.parent.parent

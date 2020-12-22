@@ -1,6 +1,5 @@
+“Documentacion”
 # PISCIS : Platform for Interactive Search and Citizen Science
-
-|Build Status|  |MIT| |Documentation Status| 
 
 <div class="alert alert-block alert-warning">
 
@@ -97,10 +96,3 @@ If you prefer, you can create a  virtual environment of conda o pip:
        $ deactivate
 </div>
 
-
-.. |Build Status| image:: https://travis-ci.org/ivco19/libs.svg?branch=master
-   :target: https://travis-ci.com/github/vanedaza/piscis
-.. |MIT| image:: https://img.shields.io/badge/License-MIT-blue.svg
-   :target: https://tldrlegal.com/license/mit-license
-.. |Documentation Status| image:: https://readthedocs.org/projects/arcovid19/badge/?version=latest
-   :target: https://arcovid19.readthedocs.io/en/latest/?badge=latest
