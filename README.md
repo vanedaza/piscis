@@ -6,45 +6,87 @@ This is app was built used Django framework. Django is a Python-based free and o
 
 In particularly the versions used in this project are Django = 2.2, pytz==2019.2 and Python = 3.7. The packages described in **requirements.txt** are necessary to start up.
 
-Installation
+## Installation
 
+Below we describe how you can install our project without the use of virtual environments and with them.
 
 
 <div class="alert alert-block alert-warning">
     <b>If you want to install the packages in your usual user, you can use the comand:</b>
            
            
-         pip install -r /path/to/requirements.txt
+        $ pip install -r /path/to/requirements.txt
 </div>
 
-- pip install -r /path/to/requirements.txt
 
-If you prefer, you can create a virtual environment with some of the commands:
 
-Option 1, for conda:
+If you prefer, you can create a  virtual environment of conda o pip:
 
-$conda create --name environment_name python=3.7
+### Conda
 
-activate your environment:
-$ source activate environment_name
+<div class="alert alert-block alert-warning">
+    <b>create conda enviroment:</b>
+           
+           
+        $ conda create --name environment_name python=3.7
 
-install requirements:
-$ conda install -r /path/requirements.txt
+</div>
 
-deactivate your environment:
-$ deactivate
 
-............................................
+<div class="alert alert-block alert-warning">
+    <b>activate your environment:</b>
+           
+           
+        $ source activate environment_name
+</div>
 
-Option 2, for pip:
+<div class="alert alert-block alert-warning">
+    <b>install requirements:</b>
+           
+           
+       $ conda install -r /path/requirements.txt
+</div>
 
-$ virtualenv environment_name -p python3
 
-activate your environment:
-$ source environment_name/bin/activate
+<div class="alert alert-block alert-warning">
+    <b>deactivate your environment:</b>
+           
+           
+       $ conda deactivate
+</div>
 
-install requirements:
-$ pip install -r /path/requirements.txt
 
-deactivate your environment:
-$ deactivate
+
+### Pip
+
+<div class="alert alert-block alert-warning">
+    <b>create conda enviroment:</b>
+           
+           
+        $ virtualenv environment_name -p python3
+
+</div>
+
+
+<div class="alert alert-block alert-warning">
+    <b>activate your environment:</b>
+           
+           
+        $ source environment_name/bin/activate
+</div>
+
+<div class="alert alert-block alert-warning">
+    <b>install requirements:</b>
+           
+           
+       $ pip install -r /path/requirements.txt
+</div>
+
+
+<div class="alert alert-block alert-warning">
+    <b>deactivate your environment:</b>
+           
+           
+       $ deactivate
+</div>
+
