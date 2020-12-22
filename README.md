@@ -12,7 +12,9 @@ Installation
 
 <div class="alert alert-block alert-warning">
     <b>If you want to install the packages in your usual user, you can use the comand:</b>
-            pip install -r /path/to/requirements.txt
+           
+           
+         pip install -r /path/to/requirements.txt
 </div>
 
 - pip install -r /path/to/requirements.txt
