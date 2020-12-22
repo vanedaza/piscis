@@ -51,8 +51,8 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-html',
-#    '--cover-html-dir=htmlcov'
+#   '--cover-html',
+#   '--cover-html-dir=htmlcov'
     '--cover-package=encuesta',
 ]
 
