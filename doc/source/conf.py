@@ -45,7 +45,7 @@ extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.autosummary',
 
-    'nbsphinx',
+    #'nbsphinx',
     'IPython.sphinxext.ipython_console_highlighting'
 ]
 
