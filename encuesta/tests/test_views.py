@@ -124,3 +124,10 @@ class TestLogOut(TestCase):
         url = reverse("logout")
         response = self.client.get(url)
         self.assertRedirects(response, "/usuario/", target_status_code=302)
+
+
+class TestDownloadView(TestCase):
+    def test_anonymous_cannot_see_page(self):
+        response = self.client.get('inicio/voto/')
+        print(response)
+        self.assertRedirects(response, 'accounts/iniciar_sesion/?next=inicio/voto/')
