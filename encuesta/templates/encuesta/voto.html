@@ -56,7 +56,9 @@
   <div class="titulo">
     <h1>¿Qué tipo de interacción ves?</h1> 
   </div>
-  <img src="{{ prueba_images.picture.url }}" class="img-responsive"/> 
+
+  <img src="{% static url_img_voto %}" class="img-responsive">
+  <!--img src="{{ prueba_images.picture.url }}" class="img-responsive"--> 
   <div class="voto">
     <form method="POST" class="choice-form">{% csrf_token %}
       <h3>Interacción: {{form.voto}}</h3>

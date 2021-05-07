@@ -45,7 +45,7 @@ def voto(request):
         return render(
             request,
             "encuesta/voto.html",
-            {"form": form, "prueba_images": prueba[random_idx]},
+            {"form": form, "prueba_images": prueba[random_idx], "url_img_voto":str(prueba[random_idx].picture.url)}
         )
     if request.method == "POST":
         form = ChoiceForm(request.POST)
