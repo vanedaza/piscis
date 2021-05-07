@@ -20,6 +20,9 @@ urlpatterns = [
     path(
         "accounts/iniciar_sesion/", views.iniciar_sesion, name="iniciar_sesion"
     ),
+    path(
+        "accounts/login/", views.login, name="login"
+    ),
     path("logout", views.logout, name="logout"),
     url(
         r"^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/"
@@ -37,7 +40,7 @@ urlpatterns = [
     url(
         r"^accounts/iniciar_sesion/reset/done/$",
         PasswordResetDoneView.as_view(
-            template_name="registration/password_reset_done.html"
+            template_name="registration/password_reset_done.html" 
         ),
         name="password_reset_done",
     ),
