@@ -1,7 +1,6 @@
 
-Hola, estás muy cerca de ser usuario de PISCIS {{ user.username }},
+Hola {{ user.username }}, estás muy cerca de ser usuario de PISCIS.
 
-por favor haga click en el siguiente link para confirmar su registro,
+Por favor haga click en el siguiente link para confirmar su registro,
 
-<!--http://{{ domain }}{% url 'activate' uidb64=uid token=token %}-->
-http://127.0.0.1:8000{% url 'activate' uidb64=uid token=token %}
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
