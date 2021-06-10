@@ -54,7 +54,7 @@ If you prefer, you can create a  virtual environment of conda o pip:
     <b>install requirements:</b>
            
            
-       $ conda install -r /path/requirements.txt
+       $ conda install --force-reinstall -y -q --name piscis -c conda-forge --file requirements.txt
 </div>
 
 
