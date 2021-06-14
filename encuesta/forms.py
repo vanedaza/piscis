@@ -11,7 +11,7 @@ class ChoiceForm(forms.ModelForm):
 
     class Meta:
         model = Choice
-        fields = (
+        fields = ( 
             "voto",
             "imagen",
         )

@@ -25,17 +25,6 @@
 
   }
 
-  .next{
-    margin: auto;
-    margin-top: 4%;
-    margin-right: 30%;
-    width: 1%;
-    height: 0%;
-    float: center;
-    background-color: rgb(71, 8, 60);
-    
-  }
-
   .titulo{
     margin-left: 10%;
     padding: 2%;
@@ -71,7 +60,20 @@
     padding: 2%;
 
   }
+  .button {
+  border: none;
+  color: rgb(14, 14, 14);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 
+.button1 {background-color: #ffffff;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
 </style>
   
 
@@ -84,13 +86,14 @@
     </div>
     <img src="{% static url_img_voto %}" class="img-responsive">
      
-    <button style="font-size:220%" onClick="window.location.reload();">&#8594;</button>
+    <button style="font-size:220%" class="button button1" onClick="window.location.reload();">&#8594;</button>
 
     <div class="voto">
     <form method="POST" class="choice-form">{% csrf_token %}
-      <h3>Interacción: {{form.voto}}</h3>
+      <h3>Interacción: {{ form.voto }}</h3>
       <button type="submit" class="save btn btn-default">Guardar voto</button>
     </form>
+
     </div>
 
 
@@ -98,7 +101,7 @@
 </div>
 
 <div style="color:#fcfafa" class="mensaje">
-Recuerda: Que puedes visitar nuestro sitio y votar cuanto quieras.
+Recuerda: Puedes visitar nuestro sitio y votar cuanto quieras.
    </div>
 <div>
 
