@@ -145,4 +145,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 iniciar_sesion_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-from .local_settings import *
+#from .local_settings import *
