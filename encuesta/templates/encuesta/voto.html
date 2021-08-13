@@ -23,6 +23,7 @@
     float: left;
   }
 
+
   .titulo{
     margin-left: 10%;
     padding: 2%;
@@ -35,6 +36,16 @@
     float: center;
   }
 
+  .mensaje{
+    margin: auto;
+    margin-top: 0%;
+    margin-right: 64%;
+    width: 30%;
+    height: 80%;
+    float: right;
+    background-color: rgb(71, 8, 60); 
+  }
+
   .img-responsive{
     max-width: 80%;
     max-height: 80%;
@@ -45,7 +56,20 @@
     float: center;
     padding: 2%;
   }
+  .button {
+  border: none;
+  color: rgb(14, 14, 14);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 
+.button1 {background-color: #ffffff;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
 </style>
   
 
@@ -56,15 +80,23 @@
   <div class="titulo">
     <h1>¿Qué tipo de interacción ves?</h1> 
   </div>
-
   <img src="{% static url_img_voto %}" class="img-responsive">
-  <!--img src="{{ prueba_images.picture.url }}" class="img-responsive"--> 
+  Cantida de votos {{ voto_number }}
+  <button style="font-size:220%" class="button button1" onClick="window.location.reload();">&#8594;</button>
+
   <div class="voto">
     <form method="POST" class="choice-form">{% csrf_token %}
       <h3>Interacción: {{form.voto}}</h3>
       <button type="submit" class="save btn btn-default">Guardar voto</button>
     </form>
+
+    </div>
+
   </div>
-</div>
+
+  <div style="color:#fcfafa" class="mensaje">
+    Recuerda: Puedes visitar nuestro sitio y votar cuanto quieras.
+     </div>
+  <div>
 
 {% endblock %}

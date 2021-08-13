@@ -42,10 +42,11 @@ def voto(request):
         choice.imagen = Images.objects.get(pk=pks[random_idx])
         choice.usuario = request.user
         choice.save()
+        voto_number = len(Choice.objects.all()) - 1
         return render(
             request,
             "encuesta/voto.html",
-            {"form": form, "prueba_images": prueba[random_idx], "url_img_voto":str(prueba[random_idx].picture.url)}
+            {"form": form, "prueba_images": prueba[random_idx], "url_img_voto":str(prueba[random_idx].picture.url), "voto_number":voto_number}
         )
     if request.method == "POST":
         form = ChoiceForm(request.POST)
