@@ -42,11 +42,10 @@ def voto(request):
         choice.imagen = Images.objects.get(pk=pks[random_idx])
         choice.usuario = request.user
         choice.save()
-        voto_number = len(Choice.objects.all()) - 1
         return render(
             request,
             "encuesta/voto.html",
-            {"form": form, "prueba_images": prueba[random_idx], "url_img_voto":str(prueba[random_idx].picture.url), "voto_number":voto_number}
+            {"form": form, "prueba_images": prueba[random_idx], "url_img_voto":str(prueba[random_idx].picture.url)}
         )
     if request.method == "POST":
         form = ChoiceForm(request.POST)
@@ -55,6 +54,7 @@ def voto(request):
             choice_id = Choice.objects.values_list("pk", flat=True)
             Choice.objects.filter(pk=max(choice_id)).update(voto=choice.voto)
             return redirect("voto")
+
 
 def welcome(request):
     if request.user.is_authenticated:
@@ -85,9 +85,8 @@ def registrar_usr(request):
             )
             to_email = form.cleaned_data.get("email")
             email = EmailMessage(email_subject, message, to=[to_email])
-            #email.send()
-            #return HttpResponse("Confirme su mail para completar el registro", "papa")
-            return redirect(request, "encuesta/registrar_usr.html")
+            email.send()
+            return HttpResponse("Confirme su mail para completar el registro")
             if user is not None:
                 do_iniciar_sesion(request, user)
                 return redirect("inicio")
