@@ -85,9 +85,9 @@
       <h1>¿Qué tipo de interacción ves?</h1> 
     </div>
     <img src="{% static url_img_voto %}" class="img-responsive">
-     
+     Cantida de votos {{ voto_number }}
     <button style="font-size:220%" class="button button1" onClick="window.location.reload();">&#8594;</button>
-
+     
     <div class="voto">
     <form method="POST" class="choice-form">{% csrf_token %}
       <h3>Interacción: {{ form.voto }}</h3>
@@ -95,8 +95,6 @@
     </form>
 
     </div>
-
-
 
 </div>
 

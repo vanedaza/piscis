@@ -18,7 +18,8 @@ urlpatterns = [
     path("inicio/proyecto/", views.proyecto, name="proyecto"),
     path("inicio/voto/", views.voto, name="voto"),
     path("usuario/", views.welcome, name="welcome"),
-    path("register", views.registrar_usr, name="register"),
+    #path("register", views.registrar_usr, name="register"),
+    path("inicio/activar_correo/", views.registrar_usr, name="register"),
     path(
         "accounts/iniciar_sesion/", views.iniciar_sesion, name="iniciar_sesion"
     ),
