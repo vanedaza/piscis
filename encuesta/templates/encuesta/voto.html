@@ -6,130 +6,110 @@
 
   * {box-sizing: border-box;}
 
-  .conteiner{
+  .alta{
     margin: auto;
+    margin-top: 0%;
+    margin-left: 1%;
+    width: 10%;
+    height: 60%;
+    float: left;
+  }
+
+  .media{
+    margin: auto;
+    margin-top: 4%;
+    margin-left: 1%;
+    width: 10%;
+    height: 60%;
+    float: left;
+  }
+
+  .baja{
+    margin: auto;
+    margin-top: 9%;
+    margin-left: 1%;
+    width: 10%;
+    height: 60%;
+    float: left;
+  }
+
+  .ask{
     margin-top: 2%;
-    width: 76%;
-    height: 600px;
-    float: right;
-  }
-
-  .example{
-    margin: auto;
-    margin-top: 8%;
-    margin-left: 8%;
-    width: 15%;
-    height: 80%;
+    margin-left: 5%;
+    margin-right: 0%;
     float: left;
-  }
-
-
-  .titulo{
-    margin-left: 10%;
-    padding: 2%;
-    float: center;
-  }
-
-	.voto{
-    margin: auto;
-    margin-left: 30%;
-    float: center;
-  }
-
-  .mensaje{
-    margin: auto;
-    margin-top: 0%;
-    margin-right: 74%;
-    width: 49%;
-    height: 5%;
-    float: right;
-    background-color: rgb(71, 8, 60); 
-  }
-
-  .mensaje1{
-    margin: auto;
-    margin-top: 0%;
-    margin-left: 40%;
-    width: 50%;
-    height: 80%;
-    float: right;
-  }
-
-  .mensaje2{
-    margin: auto;
-    margin-top: 0%;
-    margin-left: 75%;
-    width: 20%;
-    height: 80%;
-    float: left;
-  }
-  .mensaje3{
-    margin: auto;
-    margin-top: 0%;
-    margin-left: 25%;
-    width: 60%;
-    height: 95%;
-    float: left;
-    background-color: rgb(247, 246, 253); 
   }
 
   .img-responsive{
-    max-width: 80%;
-    max-height: 80%;
-    position: auto;
-    margin: auto;
-    margin-left: 20%;
-    margin-top: 0px;
-    float: center;
-    padding: 2%;
+    max-width: 20%;
+    max-height: 20%;
+    margin-right: 20%;
+    margin-left: 10%;
+    margin-top: 0%;
+    float: left;
   }
-  .button {
-  border: none;
-  color: rgb(14, 14, 14);
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
 
-.button1 {background-color: #ffffff;} /* Green */
+  .flecha{
+    margin-left: -18%;
+    margin-right: 0%;
+    margin-top: 9%;
+    float: left;
+    background-color: #2af5f5;
+  }
+
+  .interaccion{
+    border:  #1aa3f3 8px ridge;
+    font-size: 110%;
+    font-family: Lucida;
+    margin-left: -9%;
+    margin-right: 0%;
+    margin-top: 3%;
+    float: left;
+  }
+
+  .votos{
+    margin-top: -2.5%;
+    margin-left: 2%;
+    margin-right: 60%;
+    width: 25%;
+    height: 18%;
+    float: left;
+  }
+
+.button1 {background-color: #076a91;} /* Green */
 .button2 {background-color: #008CBA;} /* Blue */
 </style>
 
-<div style="color:#0a0a0a; border:  #61045c 8px ridge; text-align: center;" class="mensaje2">
-Cantidad de votos actuales:
 
-<div style="color:#7c767c; font-size: 150%; text-align: center; font-family: Lucida Console" class="mensaje3">
-    {{ voto_number }} de 4000
-</div>
-</div>
+<div>
 
-<div class="example">
-  <img class="img-responsive" src="{% static 'images_page/interacción.png' %}" alt="" width="100%" height="100%">
-</div>
-<div class="conteiner">
-  <div class="titulo">
-    <h1>¿Qué tipo de interacción ves?</h1> 
-  </div>
+  <img src="{% static 'images_page/alta.png' %}" class="alta" alt="" width="5%" height="20%">
+  <img src="{% static 'images_page/media.png' %}" class="media" alt="" width="5%" height="20%">
+  <img src="{% static 'images_page/baja.png' %}" class="baja" alt="" width="5%" height="20%">
+
+  <h3 style="color:#555155; font-family: Lucida Console;" class="ask" >¿Qué tipo de interacción ves?</h3> 
   <img src="{% static url_img_voto %}" class="img-responsive">
-  
-  <button style="font-size:420%" class="button button1" onClick="window.location.reload();">&#8594;</button>
+  <button style="font-size:100%" class="flecha" onClick="window.location.reload();">&#8594;</button>
 
-  <div class="voto">
-    <form method="POST" class="choice-form">{% csrf_token %}
-      <h3>Interacción: {{form.voto}}</h3>
-      <button type="submit" class="save btn btn-default">Guardar voto</button>
-    </form>
+  <form method="POST" class="choice-form">{% csrf_token %}
+    <p style="color:#464446;" class=interaccion>Interacción: {{form.voto}}</p>
+    <button style="color:#2f2d2f; float: left; font-size: 100%; margin-left: 45%; margin-top: 0%;" type="submit" class="save btn btn-default">Guardar voto</button>
+  </form>
 
-    </div>
-    <div style="color:#fcfafa" class="mensaje">
-      Recuerda: Puedes visitar nuestro sitio y votar cuanto quieras.
-    </div>
+  <div style="color:#2e2b2b; border:  #faf4fa 8px ridge; text-align: center; font-size: 100%; font-family: Lucida Console" class="votos">Cantidad de votos actuales:
+    <div style="color:#443f44; font-size: 100%; text-align: center; font-family: Lucida Console">{{ voto_number }} de 4000</div>
   </div>
 
-  <div>
+
+
+
+  
+
+  <!--p>Recuerda, puedes visitar nuestro sitio y votar cuanto quieras.<p-->
+
+
+
+ 
+<div>
 
 {% endblock %}
