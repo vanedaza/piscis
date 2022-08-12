@@ -74,23 +74,23 @@ def registrar_usr(request):
             user.is_activate = False
             user.save()
             current_site = get_current_site(request)
-            email_subject = "Activa tu cuenta de PISCIS."
-            message = render_to_string(
-                "encuesta/activar_correo.html",
-                {
-                    "user": user,
-                    "domain": current_site.domain,
-                    "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-                    "token": account_activation_token.make_token(user),
-                },
-            )
-            to_email = form.cleaned_data.get("email")
-            email = EmailMessage(email_subject, message, to=[to_email])
-            email.send()
-            return HttpResponse("Confirme su mail para completar el registro")
+            #email_subject = "Activa tu cuenta de PISCIS."
+            #message = render_to_string(
+            #    "encuesta/activar_correo.html",
+            #    {
+            #        "user": user,
+            #        "domain": current_site.domain,
+            #        "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+            #        "token": account_activation_token.make_token(user),
+            #    },
+            #)
+            #to_email = form.cleaned_data.get("email")
+            #email = EmailMessage(email_subject, message, to=[to_email])
+            #email.send()
+            #return HttpResponse("Confirme su mail para completar el registro")
             if user is not None:
                 do_iniciar_sesion(request, user)
-                return redirect("inicio")
+                return redirect("voto")
     else:
         form = AstronomerForm()
     form.fields["username"].help_text = None
