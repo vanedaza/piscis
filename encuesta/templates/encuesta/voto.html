@@ -2,6 +2,10 @@
 {% load static %}
 {% block content %}
 
+<head>
+    <title>Encuesta</title>
+</head>
+
 <style>
 
   * {box-sizing: border-box;}
@@ -80,36 +84,24 @@
 .button2 {background-color: #008CBA;} /* Blue */
 </style>
 
+<div class="conteiner1" style="margin-top: 16vh;margin-right: 3vw;margin-left: 3vw;">
+    <div class="conteiner1">
+      <img class="img-responsive" src="{% static 'images_page/alta.png' %}" width="250vw" height="300vh" alt="">
+      <img class="img-responsive" src="{% static 'images_page/media.png' %}" width="250vw" height="300vh">
+      <img class="img-responsive" src="{% static 'images_page/baja.png' %}" width="250vw" height="300vh">
+    </div>
+      <h3 style="color:#555155; font-family: Lucida Console;" class="ask" >¿Qué tipo de interacción ves?</h3> 
+      <img src="{% static url_img_voto %}" class="img-responsive">
+      <button style="font-size:100%" class="flecha" onClick="window.location.reload();">&#8594;</button>
+      <form method="POST" class="choice-form">{% csrf_token %}
+        <p style="color:#464446;" class=interaccion>Interacción: {{form.voto}}</p>
+        <button style="color:#2f2d2f; float: left; font-size: 100%; margin-left: 45%; margin-top: 0%;" type="submit" class="save btn btn-default">Guardar voto</button>
+      </form>
 
-<div>
-
-  <img src="{% static 'images_page/alta.png' %}" class="alta" alt="" width="5%" height="20%">
-  <img src="{% static 'images_page/media.png' %}" class="media" alt="" width="5%" height="20%">
-  <img src="{% static 'images_page/baja.png' %}" class="baja" alt="" width="5%" height="20%">
-
-  <h3 style="color:#555155; font-family: Lucida Console;" class="ask" >¿Qué tipo de interacción ves?</h3> 
-  <img src="{% static url_img_voto %}" class="img-responsive">
-  <button style="font-size:100%" class="flecha" onClick="window.location.reload();">&#8594;</button>
-
-  <form method="POST" class="choice-form">{% csrf_token %}
-    <p style="color:#464446;" class=interaccion>Interacción: {{form.voto}}</p>
-    <button style="color:#2f2d2f; float: left; font-size: 100%; margin-left: 45%; margin-top: 0%;" type="submit" class="save btn btn-default">Guardar voto</button>
-  </form>
-
-  <div style="color:#2e2b2b; border:  #faf4fa 8px ridge; text-align: center; font-size: 100%; font-family: Lucida Console" class="votos">Cantidad de votos actuales:
-    <div style="color:#443f44; font-size: 100%; text-align: center; font-family: Lucida Console">{{ voto_number }} de 4000</div>
-  </div>
-
-
-
-
-  
-
-  <!--p>Recuerda, puedes visitar nuestro sitio y votar cuanto quieras.<p-->
-
-
-
- 
+      <div style="color:#2e2b2b; border:  #faf4fa 8px ridge; text-align: center; font-size: 100%; font-family: Lucida Console" class="votos">Cantidad de votos actuales:
+            <div style="color:#443f44; font-size: 100%; text-align: center; font-family: Lucida Console">{{ voto_number }} de 4000</div>
+      </div>
+    <div>
 <div>
 
 {% endblock %}

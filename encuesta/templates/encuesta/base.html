@@ -1,5 +1,73 @@
 <!DOCTYPE html>
+<style>
+ body {
+    background-color: rgb(206, 33, 33);
+    padding: 0;
+    margin:0;
+}
 
+/* position element in the middle */
+.middle1 {
+    position: absolute;
+    top:12%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+} 
+
+
+/* Ratio: height/width */ 
+:root {
+    --ratio: 0.5;
+    --reverse-ratio: 2;
+    --container-width: 100vw;
+    --container-height: 100vh;
+
+    --font1-sizeVW: 15vh;
+    --font1-sizeVH: calc(var(--ratio) * 15vw);
+
+    --font2-sizeVW: 6vh;
+    --font2-sizeVH: calc(var(--ratio) * 6vw);
+
+    --font3-sizeVW: 3vh;
+    --font3-sizeVH: calc(var(--ratio) * 3vw);
+
+}
+
+
+#container1 {
+background-color: rgb(138, 109, 13);
+width: var(--container-width);
+height: calc(var(--ratio) * var(--container-width));
+
+max-width: var(--container-width);  
+max-height: calc( 0.15 * var(--container-height));
+top: 100%;
+}
+
+#span1 {
+    font-size: var(--font1-sizeVW);   
+}
+
+#span2 {
+    font-size: var(--font2-sizeVW);
+}
+
+/* max-width: (reversRatio * 100vh) */
+@media all and (max-width: 200vh) {  
+
+    #container {
+        background-color: green;
+    }
+
+    #span1 {  
+        font-size: var(--font1-sizeVH); 
+    } 
+
+    #span2 {  
+        font-size: var(--font2-sizeVH);
+    } 
+} 
+</style>
 
 <html lang="en">
   {% load static %}
@@ -21,10 +89,10 @@
         <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
     </head>
 
-    <body>
+
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
+
       <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
@@ -62,24 +130,20 @@
           </li>
         </ul>
       </div>
-    </div>
+
   </nav>
 
 <!-- Page Header -->
-  <header class="masthead" style="background-image: url('{% static 'images_page/nebulosa.jpeg' %}')">
+<div id="container1">
+  <header class="masthead" style="bottom:45vh; top:-90vh; height:120vh;background-image: url('{% static 'images_page/logo1.jpeg' %}');background-position-y: bottom;background-size: 100% 25%;background-attachment: initial">
     <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Pares de galaxias</h1>
-            <span class="subheading">Clasificación de la interación entre pares de galaxias</span>
-          </div>
-        </div>
-      </div>
+<!--          <div class="site-heading" style="text-align:center">
+            <span id="span2" >Pares de galaxias</span>
+            <span id="span2" class="subheading">Clasificación de la interación entre pares de galaxias</span>
+          </div>-->
     </div>
   </header>
-
+</div>
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -93,5 +157,5 @@
         {% endblock %}
     </div>
 
-    </body>
+</div>
 </html>
