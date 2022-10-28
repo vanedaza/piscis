@@ -37,20 +37,12 @@
     float: left;
   }
 
-  .ask{
-    margin-top: 2%;
-    margin-left: 5%;
-    margin-right: 0%;
-    float: left;
-  }
-
   .img-responsive{
-    max-width: 20%;
-    max-height: 20%;
-    margin-right: 20%;
-    margin-left: 10%;
-    margin-top: 0%;
-    float: left;
+    max-width: 60%;
+    max-height: 60%;
+    float: center;
+    margin: auto;
+    position: relative;
   }
 
   .flecha{
@@ -84,14 +76,32 @@
 .button2 {background-color: #008CBA;} /* Blue */
 </style>
 
-<div class="conteiner1" style="margin-top: 16vh;margin-right: 3vw;margin-left: 3vw;">
-    <div class="conteiner1">
-      <img class="img-responsive" src="{% static 'images_page/alta.png' %}" width="250vw" height="300vh" alt="">
-      <img class="img-responsive" src="{% static 'images_page/media.png' %}" width="250vw" height="300vh">
-      <img class="img-responsive" src="{% static 'images_page/baja.png' %}" width="250vw" height="300vh">
-    </div>
-      <h3 style="color:#555155; font-family: Lucida Console;" class="ask" >¿Qué tipo de interacción ves?</h3> 
-      <img src="{% static url_img_voto %}" class="img-responsive">
+<div class="container-fluid cew-9" style = "margin-top: 15vh; text-align:center; border: 1px solid red">
+  <div class="row" styke="height:100%">
+     <div class="col">
+         <div class="conteiner1" style="width: 22vw; border: 1px solid red" align="center">
+         <img align="center" class="img-responsive" src="{% static 'images_page/alta.png' %}" width="calc(100vh + 100vw)" height="calc(100vh + 100vw)">
+         <br clear="left">
+         <img align="center" class="img-responsive" src="{% static 'images_page/media.png' %}" width="calc(100vh + 100vw)" height="calc(100vh + 100vw)">
+         <br clear="left">
+         <img align="center" class="img-responsive" src="{% static 'images_page/baja.png' %}" width="calc(100vh + 100vw)" height="calc(100vh + 100vw)">
+         </div>
+     </div>
+     <div class="col" align="center">
+         <div class="conteiner1" style="width: 50vw;;border: 1px solid red ">
+         <span id="span2" style="color:#555155;">¿Qué tipo de interacción ves?
+         <br clear="left">
+         <img src="{% static url_img_voto %}" class="img-responsive" widht="calc(300vh + 300vw)" height="calc(300vh + 300vw)" float="center"> 
+         </span>
+         </div>
+     </div>
+     <div class="col">
+         <div class="conteiner1" style="width:8vw;border: 1px solid red" align="center">
+     </div>
+  </div>
+</div>
+
+<!--<div>
       <button style="font-size:100%" class="flecha" onClick="window.location.reload();">&#8594;</button>
       <form method="POST" class="choice-form">{% csrf_token %}
         <p style="color:#464446;" class=interaccion>Interacción: {{form.voto}}</p>
@@ -104,4 +114,4 @@
     <div>
 <div>
 
-{% endblock %}
+{% endblock %}!-->
