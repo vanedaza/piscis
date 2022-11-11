@@ -14,5 +14,5 @@ class Choice(models.Model):
     imagen = models.ForeignKey(
         Images, on_delete=models.CASCADE, blank=True, null=True
     )
-    CHOICE_TEXT = (("A", "Alta"), ("B", "Baja"), ("C", "Media"))
+    CHOICE_TEXT = (("A", "Alta"), ("C", "Media"), ("B", "Baja"))
     voto = models.CharField(max_length=20, choices=CHOICE_TEXT)
