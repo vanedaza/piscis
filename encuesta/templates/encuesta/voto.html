@@ -50,15 +50,28 @@
     font-family: Lucida;
   }
 
+  .button1{
+    font-size:100%;
+    border-radius: 100%;
+    background-color: #e175e1;
+    color: #f7b655;border: 2px solid black;
+    box-shadow: 0 6px #999
+  }
 
-.button1 {background-color: #076a91;} /* Green */
-.button2 {background-color: #008CBA;} /* Blue */
+  .button1:hover {background-color: #6f3e8e}
+
+  .button1:active {
+  background-color: #6f3e8e;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 </style>
 
 <div class="container-fluid cew-9" style = "margin-top: 15vh; text-align:center;">
   <div class="row" styke="height:100%">
-     <div class="col">
-         <div class="conteiner1" style="width: 22vw;" align="center">
+     <div class="col" style = "padding-right:0vw;flex-grow:0;max-width:50%">
+         <div class="conteiner1" style="width: 22vw; height:35vh" align="center">
          <img align="center" class="img-responsive" src="{% static 'images_page/alta.png' %}" width="calc(100vh + 100vw)" height="calc(100vh + 100vw)" style="margin-top: 1vh;">
          <br clear="left">
          <img align="center" class="img-responsive" src="{% static 'images_page/media.png' %}" width="calc(100vh + 100vw)" height="calc(100vh + 100vw)" style="margin-top: 1vh;">
@@ -71,8 +84,7 @@
          <span id="span2" style="color:#555155;">¿Qué tipo de interacción ves?
          <br clear="left">
          <img src="{% static url_img_voto %}" class="img-responsive" widht="calc(300vh + 300vw)" height="calc(300vh + 300vw)" float="center"> 
-         <button style="font-size:100%" onClick="window.location.reload();">&#8594;</button>
-
+         <button class="button1" onClick="window.location.reload();">&#8594;</button>
          <form method="POST" class="choice-form">{% csrf_token %}
          <p style="color:#464446; margin-top:1vh;" class=interaccion>Interacción: {{form.voto}}</p>
          <button style="color:#2f2d2f; float: center; font-size: inherit" type="submit" class="save btn btn-default">Guardar voto</button>
@@ -88,17 +100,4 @@
   </div>
 </div>
 
-<!--<div>
-      <button style="font-size:100%" class="flecha" onClick="window.location.reload();">&#8594;</button>
-      <form method="POST" class="choice-form">{% csrf_token %}
-        <p style="color:#464446;" class=interaccion>Interacción: {{form.voto}}</p>
-        <button style="color:#2f2d2f; float: left; font-size: 100%; margin-left: 45%; margin-top: 0%;" type="submit" class="save btn btn-default">Guardar voto</button>
-      </form>
-
-      <div style="color:#2e2b2b; border:  #faf4fa 8px ridge; text-align: center; font-size: 100%; font-family: Lucida Console" class="votos">Cantidad de votos actuales:
-            <div style="color:#443f44; font-size: 100%; text-align: center; font-family: Lucida Console">{{ voto_number }} de 4000</div>
-      </div>
-    <div>
-<div>
-
-{% endblock %}!-->
+{% endblock %}
