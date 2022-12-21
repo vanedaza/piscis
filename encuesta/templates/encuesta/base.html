@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <style>
  body {
-    background-color: rgb(206, 33, 33);
+    background-color: #fee0eb;
     padding: 0;
     margin:0;
 }
@@ -91,47 +91,83 @@ top: 100%;
 
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-
-      <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="border-bottom-width: 0px; padding-bottom: 0px; padding-top: 2vh">
+      <a class="navbar-brand" href="{% url 'inicio' %}">
+      <img style="max-width:100px; margin-top: -7px;" src="{% static 'images_page/logo1.png' %}" alt="">
+</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="margin-left: 45vw;">
         Menu
         <i class="fas fa-bars"></i>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="collapse navbar-collapse" id="navbarResponsive" style="font-size: -webkit-xxx-large">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             {% if user.is_authenticated %}
-              <a class="nav-link" href="{% url 'voto' %}">Encuesta</a>
+              <a class="nav-link" href="{% url 'voto' %}" style="box-shadow: 1px 1px 3px #009e92; border-radius: 5%; top:6px">
+                ENCUESTA
+              </a>
             {% else %}
-              <a href="{% url 'iniciar_sesion' %}">Encuesta</a>
+              <a href="{% url 'iniciar_sesion' %}" style="box-shadow: 1px 1px 3px #009e92; border-radius: 5%; ">
+                ENCUESTA
+              </a>
             {% endif %}
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'proyecto' %}">Proyecto</a>
+            <a class="nav-link" href="{% url 'proyecto' %}" style="box-shadow: 1px 1px 3px #009e92; border-radius: 5%;">
+              Proyecto
+            </a>
           </li>
           <li class="nav-item"> 
-            <a class="nav-link" href="{% url 'contacto' %}">Contactos</a>
+            <a class="nav-link" href="{% url 'contacto' %}" style="box-shadow: 1px 1px 3px #009e92; border-radius: 5%">
+              Contactos
+            </a>
           </li>
           <li class="nav-item">
-            <hr/>
+
+
+          <li class="dropdown" style="top:6px">
+            {% if user.is_authenticated %}
+                        <a class="dropdown-toggle" href="/" data-toggle="dropdown" color="" style="box-shadow: 1px 1px 3px #009e92; border-radius: 5%; padding-top: 20px;padding-bottom: 9px;padding-right: 13px;padding-left: 20px; font-size:24px">
+                           <b>Hola {{ user.username }}!<b>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:#d7f6ee; box-shadow: 1px 1px 3px #009e92; border-radius: 5%; padding:10px 20px; font:message-box">
+                        <li><a href="{% url 'logout' %}"><b>logOUT</b></a>
+                        </li>
+                        </ul>
+                    </li>
+            {% else %}
+                        <a href="/" class="dropdown-toggle" data-toggle="dropdown" style="box-shadow: 1px 1px 3px #009e92; border-radius: 5%;padding-top: 20px;padding-bottom: 9px;padding-right: 13px;padding-left: 20px; font-size:24px">
+                        <b>Sesión</b>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:#d7f6ee; box-shadow: 1px 1px 3px #009e92; border-radius: 5%; padding:10px 20px; font:message-box">
+                            <li><a href="{% url 'iniciar_sesion' %}"><b>logIN</b></a>
+                            </li>
+                            <li><a href="{% url 'register' %}"><b>Registrarse</b></a>
+                            </li>
+                        </ul>
+                    </li>
+            {% endif %} 
+
+
+<!--            <hr/>
             {% if user.is_authenticated %}
               <li class="nav-item">
               <a class="nav-link" href="/">Hola {{ user.username }}!</a>
               </li> 
               <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">logout</a>
+              <a class="nav-link" href="{% url 'logout' %}">logOUT</a>
               </li>
             {% else %}
               <li class="nav-item">
-              <a class="nav-link" href="{% url 'iniciar_sesion' %}">iniciar_sesion</a>
+              <a class="nav-link" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>
               </li>
-            {% endif %}
+            {% endif %}  -->
+  
+  
           </li>
         </ul>
       </div>
-
-  </nav>
+  </nav>   
 
 <!-- Page Header -->
 <div id="container1">
