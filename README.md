@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/ivco19/libs.svg?branch=master)](https://travis-ci.com/github/vanedaza/piscis)
 [![Documentation Status](https://readthedocs.org/projects/piscis/badge/?version=latest)](https://piscis.readthedocs.io/en/latest/)
 [![https://github.com/leliel12/diseno_sci_sfw](https://img.shields.io/badge/DiSoftCompCi-FAMAF-ffda00)](https://github.com/leliel12/diseno_sci_sfw)
-[Article](http://astronomiaargentina.fcaglp.unlp.edu.ar/b62/2021BAAA...62..310D.pdf)
+
 
 
 
@@ -15,7 +15,7 @@
 
 Piscis is an app that allows users to vote for the type of interaction observed in images of galaxies pair. 
 
-This is app was built used Django framework. Django is a Python-based free and open-source web framework, which follows the model-template-view (MTV) architectural pattern. It is maintained by the Django Software Foundation (DSF), an independent organization established as a non-profit. 
+This is app was built used Django framework. Django is a Python-based free and open-source web framework, which follows the model-template-view (MTV) architectural pattern. It is maintained by the Django Software Foundation (DSF), an independent organization established as a non-profit ([Article](http://astronomiaargentina.fcaglp.unlp.edu.ar/b62/2021BAAA...62..310D.pdf)). 
 
 In particularly the versions used in this project are Django = 2.2, pytz==2019.2 and Python = 3.7. The packages described in **requirements.txt** are necessary to start up.
 
