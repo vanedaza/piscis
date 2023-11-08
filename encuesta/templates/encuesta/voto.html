@@ -85,10 +85,19 @@
          <br clear="left">
          <img src="{% static url_img_voto %}" class="img-responsive" widht="calc(300vh + 300vw)" height="calc(300vh + 300vw)" float="center"> 
          <button class="button1" onClick="window.location.reload();">&#8594;</button>
+        <form method="POST" class="choice-form">
+            {% csrf_token %}
+            <p style="color:#464446; margin-top:1vh;" class="interaccion">Interacción:</p>
+    
+            <button type="submit" name="voto" value="A">Alta</button>
+            <button type="submit" name="voto" value="C">Media</button>
+            <button type="submit" name="voto" value="B">Baja</button>
+        </form>
+         <!----
          <form method="POST" class="choice-form">{% csrf_token %}
          <p style="color:#464446; margin-top:1vh;" class=interaccion>Interacción: {{form.voto}}</p>
          <button style="color:#2f2d2f; float: center; font-size: inherit" type="submit" class="save btn btn-default">Guardar voto</button>
-         </form> 
+         </form> -->
          </span>
          </div>
      </div>
