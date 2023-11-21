@@ -5,16 +5,18 @@ from django.contrib.auth.models import User
 from .models import Choice
 
 
-class ChoiceForm(forms.ModelForm):
-    """Ingresa la información del voto por el usuario
-    y el id de la imagen elegida"""
 
+class ChoiceForm(forms.ModelForm):
     class Meta:
         model = Choice
-        fields = (
-            "voto",
-            "imagen",
-        )
+        fields = ['voto', 'imagen']
+        widgets = {
+            'voto': forms.RadioSelect(choices=Choice.CHOICE_TEXT),
+        }
+    
+    def __init__(self, *args, **kwargs):
+        super(ChoiceForm, self).__init__(*args, **kwargs)
+        self.fields['voto'].initial = 'A'  # Establecer 'Alta' como valor predeterminado
 
 
 class AstronomerForm(UserCreationForm):
