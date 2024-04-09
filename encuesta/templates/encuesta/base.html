@@ -93,9 +93,9 @@ top: 100%;
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="border-bottom-width: 0px; padding-bottom: 0px; padding-top: 2vh">
       <a class="navbar-brand" href="{% url 'inicio' %}">
-      <img style="max-width:100px; margin-top: -7px;" src="{% static 'images_page/logo1.png' %}" alt="">
+      <img style="min-width: 150px; max-width:25%; margin-top: -4.5%; margin-left: 35vw" src="{% static 'images_page/logo1.png' %}" alt="">
 </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="margin-left: 45vw;">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="margin-left: 0vw;">
         Menu
         <i class="fas fa-bars"></i>
       </button>
@@ -103,43 +103,45 @@ top: 100%;
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             {% if user.is_authenticated %}
-              <a class="nav-link" href="{% url 'voto' %}" style="box-shadow: 1px 1px 3px #009e92; border-radius: 5%; top:6px">
+              <a class="nav-link" href="{% url 'voto' %}" style="box-shadow: 1px 1px 3px #ffb65a; border-radius: 5%; top:6px; color: #ffb65a; background-color: #931e70">
                 ENCUESTA
               </a>
             {% else %}
-              <a href="{% url 'iniciar_sesion' %}" style="box-shadow: 1px 1px 3px #009e92; border-radius: 5%; ">
+              <a href="{% url 'iniciar_sesion' %}" style="box-shadow: 1px 1px 3px #ffb65a; border-radius: 5%; color: #ffb65a; background-color: #931e70">
                 ENCUESTA
               </a>
             {% endif %}
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'proyecto' %}" style="box-shadow: 1px 1px 3px #009e92; border-radius: 5%;">
+<!--          <li class="nav-item">
+            <a class="nav-link" href="{% url 'proyecto' %}" style="box-shadow: 1px 1px 3px #ffb65a; border-radius: 5%;">
               Proyecto
             </a>
           </li>
           <li class="nav-item"> 
-            <a class="nav-link" href="{% url 'contacto' %}" style="box-shadow: 1px 1px 3px #009e92; border-radius: 5%">
+            <a class="nav-link" href="{% url 'contacto' %}" style="box-shadow: 1px 1px 3px #ffb65a; border-radius: 5%">
               Contactos
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item"> -->
 
 
           <li class="dropdown" style="top:6px">
             {% if user.is_authenticated %}
-                        <a class="dropdown-toggle" href="/" data-toggle="dropdown" color="" style="box-shadow: 1px 1px 3px #009e92; border-radius: 5%; padding-top: 20px;padding-bottom: 9px;padding-right: 13px;padding-left: 20px; font-size:24px">
+                        <a class="dropdown-toggle" href="/" data-toggle="dropdown" color="" style="box-shadow: 1px 1px 3px #ffb65a; border-radius: 5%; padding-top: 20px;padding-bottom: 9px;padding-right: 13px;padding-left: 20px; font-size:24px;background-color: #931e70">
                            <b>Hola {{ user.username }}!<b>
                         </a>
-                        <ul class="dropdown-menu" style="background-color:#d7f6ee; box-shadow: 1px 1px 3px #009e92; border-radius: 5%; padding:10px 20px; font:message-box">
+                        <ul class="dropdown-menu" style="background-color:#bf519e; box-shadow: 1px 1px 3px #ffb65a; border-radius: 5%; padding:10px 20px; font:message-box">
                         <li><a href="{% url 'logout' %}"><b>logOUT</b></a>
                         </li>
                         </ul>
                     </li>
             {% else %}
-                        <a href="/" class="dropdown-toggle" data-toggle="dropdown" style="box-shadow: 1px 1px 3px #009e92; border-radius: 5%;padding-top: 20px;padding-bottom: 9px;padding-right: 13px;padding-left: 20px; font-size:24px">
-                        <b>Sesión</b>
+                        <a href="/" class="dropdown-toggle" data-toggle="dropdown" style="box-shadow: 1px 1px 3px #ffb65a; border-radius: 5%;padding-top: 20px;padding-bottom: 9px;padding-right: 13px;padding-left: 20px; font-size:24px;background-color: #931e70">
+                        <b style="
+                           color: #ffb65a; background-color: #931e70"
+                          ">Sesión</b>
                         </a>
-                        <ul class="dropdown-menu" style="background-color:#d7f6ee; box-shadow: 1px 1px 3px #009e92; border-radius: 5%; padding:10px 20px; font:message-box">
+                        <ul class="dropdown-menu" style="background-color:#bf519e; box-shadow: 1px 1px 3px #ffb65a; border-radius: 5%; padding:10px 20px; font:message-box">
                             <li><a href="{% url 'iniciar_sesion' %}"><b>logIN</b></a>
                             </li>
                             <li><a href="{% url 'register' %}"><b>Registrarse</b></a>
@@ -171,7 +173,7 @@ top: 100%;
 
 <!-- Page Header -->
 <div id="container1">
-  <header class="masthead" style="bottom:45vh; top:-90vh; height:120vh;background-position-y: bottom;background-size: 100% 25%;background-attachment: initial">
+  <header class="masthead" style="bottom:45vh; top:-560%; height:120vh;background-position-y: bottom;background-size: 100% 25%;background-attachment: initial">
     <div class="overlay"></div>
 <!--          <div class="site-heading" style="text-align:center">
             <span id="span2" >Pares de galaxias</span>
